@@ -261,4 +261,25 @@ footer h3 {
   button {
     width: 50%;
   }
+
+  .termLgpd {
+    padding: 24px 16px;
+    border: 2px solid var(--vermelho);
+    background: rgba(213, 10, 10, 0.08);
+  }
+
+  .termLgpd input {
+    padding: 16px;
+    font-size: 1.15rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .termLgpd label {
+    font-size: 1.3rem;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+  }
 }
