@@ -1,0 +1,264 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --vermelho: #d50a0a;
+  --vermelho-escuro: #a80808;
+  --texto: #f5f7fa;
+  --campo: #ffffff;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+
+  background: linear-gradient(
+    180deg,
+    #0a0a0a 0%,
+    #111111 25%,
+    #013369 75%,
+    #00152e 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.logo-nfl {
+  width: 110px;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.header-top h1 {
+  flex: 1;
+  text-align: center;
+  font-size: clamp(1.5rem, 7vw, 4rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  text-shadow: 4px 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.menu-itens {
+  list-style: none;
+  display: flex;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-itens li {
+  flex: 1;
+}
+
+.menu-itens a {
+  display: block;
+  padding: 12px 4px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+
+.menu-itens a:hover,
+.menu-itens a:focus-visible {
+  color: var(--vermelho);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+main {
+  flex: 1;
+  padding: 24px 16px;
+}
+
+.form-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+}
+
+legend {
+  padding: 0 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: var(--campo);
+  color: #111;
+  font-size: 1rem;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--vermelho);
+}
+
+input[type="file"] {
+  background: transparent;
+  color: var(--texto);
+  padding: 8px 0;
+}
+
+.grupo {
+  border: none;
+  padding: 0;
+  margin-top: 4px;
+}
+
+.grupo legend {
+  padding: 0;
+  font-size: 1rem;
+}
+
+.opcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.opcoes label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0;
+  font-weight: normal;
+}
+
+input[type="radio"] {
+  width: auto;
+  accent-color: var(--vermelho);
+}
+
+.destaque {
+  padding: 24px 16px;
+  border: 2px solid var(--vermelho);
+  background: rgba(213, 10, 10, 0.08);
+}
+
+.destaque legend {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.destaque label {
+  font-size: 1.1rem;
+}
+
+.destaque input {
+  padding: 16px;
+  font-size: 1.15rem;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin: 24px auto 0;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: var(--vermelho);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: var(--vermelho-escuro);
+}
+
+footer {
+  padding: 20px 16px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+footer h3 {
+  font-size: 0.95rem;
+  font-weight: normal;
+}
+
+@media (min-width: 768px) {
+  .header-top {
+    padding: 24px 40px;
+    gap: 40px;
+  }
+
+  .logo-nfl {
+    width: 250px;
+  }
+
+  .menu-itens a {
+    padding: 14px 8px;
+    font-size: 1rem;
+  }
+
+  .form-container {
+    max-width: 1100px;
+    padding: 32px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 32px;
+  }
+
+  button {
+    width: 50%;
+  }
+}
