@@ -4,19 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pesquisa NFL</title>
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <title>Pesquisa NFL – Formulário sobre as franquias da liga</title>
+  <meta name="description"
+    content="Responda à pesquisa sobre as franquias da NFL. Site em português com história da liga, franquias, curiosidades e notícias.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
   <header class="header">
     <div class="header-top">
-      <img src="img/nfl-logo-wallpaper-thumb.jpg" alt="Logo NFL" class="logo-nfl">
+      <!-- Troque width e height pelas medidas reais da imagem (evita salto de layout) -->
+      <img src="img/nfl-logo-wallpaper-thumb.jpg" alt="Logo da NFL" class="logo-nfl" width="250" height="140"
+        fetchpriority="high">
       <h1>Pesquisa NFL</h1>
     </div>
 
-    <nav class="menu">
+    <nav class="menu" aria-label="Menu principal">
       <ul class="menu-itens">
         <li><a href="#">História da Liga</a></li>
         <li><a href="#">Franquias</a></li>
@@ -26,9 +33,11 @@
     </nav>
   </header>
 
-  <main>
+  <main id="conteudo" tabindex="-1">
     <section class="form-container">
-      <form action="#" method="post" enctype="multipart/form-data">
+      <form action="#" method="post" enctype="multipart/form-data" aria-labelledby="titulo-form">
+        <h2 id="titulo-form" class="sr-only">Formulário da pesquisa</h2>
+        <p class="aviso-obrigatorio">Campos com * são obrigatórios.</p>
 
         <div class="form-grid">
 
@@ -37,30 +46,38 @@
             <fieldset>
               <legend>Dados Pessoais</legend>
 
-              <label for="userName">Nome:</label>
-              <input type="text" id="userName" name="userName" placeholder="Digite aqui seu nome" required>
+              <label for="userName">Nome: <span aria-hidden="true">*</span></label>
+              <input type="text" id="userName" name="userName" placeholder="Digite aqui seu nome" autocomplete="name"
+                required>
 
-              <label for="age">Idade:</label>
-              <input type="number" id="age" name="age" min="12" max="75" required>
+              <label for="age">Idade: <span aria-hidden="true">*</span></label>
+              <input type="number" id="age" name="age" min="12" max="75" inputmode="numeric" aria-describedby="ageHint"
+                required>
+              <small id="ageHint" class="dica">Entre 12 e 75 anos.</small>
 
               <label for="birthDate">Data de nascimento:</label>
-              <input type="date" id="birthDate" name="birthDate">
+              <input type="date" id="birthDate" name="birthDate" autocomplete="bday">
 
-              <label for="userEmail">E-mail:</label>
-              <input type="email" id="userEmail" name="userEmail" placeholder="Digite seu e-mail válido" required>
+              <label for="userEmail">E-mail: <span aria-hidden="true">*</span></label>
+              <input type="email" id="userEmail" name="userEmail" placeholder="Digite seu e-mail válido"
+                autocomplete="email" required>
 
               <label for="userPhone">Telefone:</label>
-              <input type="tel" id="userPhone" name="userPhone" placeholder="(99) 99999-9999">
+              <input type="tel" id="userPhone" name="userPhone" placeholder="(99) 99999-9999" autocomplete="tel"
+                aria-describedby="phoneHint">
+              <small id="phoneHint" class="dica">Opcional. Informe o DDD.</small>
 
               <label for="userImage">Upload de Foto:</label>
-              <input type="file" id="userImage" name="userImage" accept="image/*">
+              <input type="file" id="userImage" name="userImage" accept="image/*" aria-describedby="imageHint">
+              <small id="imageHint" class="dica">Opcional. Envie um arquivo de imagem.</small>
             </fieldset>
 
             <fieldset class="destaque">
               <legend>Sua Franquia</legend>
 
               <label for="team">Para qual franquia você torce?</label>
-              <input type="text" id="team" name="team" list="teamList" placeholder="Escolha ou digite o time">
+              <input type="text" id="team" name="team" list="teamList" placeholder="Escolha ou digite o time"
+                autocomplete="off">
               <datalist id="teamList">
                 <option value="Arizona Cardinals"></option>
                 <option value="Atlanta Falcons"></option>
@@ -97,15 +114,7 @@
               </datalist>
             </fieldset>
 
-            <fieldset class="termLgpd">
-              <legend>Termos e Condicões: </legend>
-              <input type="checkbox" name="userLgpdTerm" id="userLgpdTerm" value="accepted" required>
-              <label for="userLgpdTerm">Você aceita participar da pesquisa?</label><br>
-
-            </fieldset>
-
           </div>
-
 
           <div class="coluna">
 
@@ -134,7 +143,7 @@
 
               <label for="musicStyle">Estilo de música:</label>
               <input type="text" id="musicStyle" name="musicStyle" list="musicList"
-                placeholder="Escolha ou digite o seu">
+                placeholder="Escolha ou digite o seu" autocomplete="off">
               <datalist id="musicList">
                 <option value="Rock"></option>
                 <option value="Pop"></option>
@@ -155,10 +164,10 @@
               <legend>Localização</legend>
 
               <label for="city">Cidade onde reside:</label>
-              <input type="text" id="city" name="city" placeholder="Ex: Fortaleza">
+              <input type="text" id="city" name="city" placeholder="Ex: Fortaleza" autocomplete="address-level2">
 
               <label for="state">Estado:</label>
-              <select id="state" name="state">
+              <select id="state" name="state" autocomplete="address-level1">
                 <option value="">Selecione</option>
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
@@ -191,29 +200,42 @@
             </fieldset>
 
             <fieldset>
-              <legend>Redes Sociais</legend>
+              <legend>Redes Sociais (opcional)</legend>
 
               <label for="instagram">Instagram:</label>
-              <input type="text" id="instagram" name="instagram" placeholder="@seuusuario">
+              <input type="text" id="instagram" name="instagram" placeholder="@seuusuario" autocomplete="off"
+                autocapitalize="none" spellcheck="false">
 
               <label for="twitter">X (Twitter):</label>
-              <input type="text" id="twitter" name="twitter" placeholder="@seuusuario">
+              <input type="text" id="twitter" name="twitter" placeholder="@seuusuario" autocomplete="off"
+                autocapitalize="none" spellcheck="false">
 
               <label for="tiktok">TikTok:</label>
-              <input type="text" id="tiktok" name="tiktok" placeholder="@seuusuario">
+              <input type="text" id="tiktok" name="tiktok" placeholder="@seuusuario" autocomplete="off"
+                autocapitalize="none" spellcheck="false">
             </fieldset>
 
           </div>
         </div>
 
-        <button type="submit">Enviar</button>
-        <button type="reset">Limpar</button>
+        <fieldset class="termLgpd">
+          <legend>Termos e Condições</legend>
+          <div class="check">
+            <input type="checkbox" name="userLgpdTerm" id="userLgpdTerm" value="accepted" required>
+            <label for="userLgpdTerm">Você aceita participar da pesquisa? <span aria-hidden="true">*</span></label>
+          </div>
+        </fieldset>
+
+        <div class="acoes">
+          <button type="submit">Enviar</button>
+          <button type="reset" class="secundario">Limpar</button>
+        </div>
       </form>
     </section>
   </main>
 
   <footer>
-    <h4>Desenvolvido por <em>Breno Cordeiro</em> para treinar curso da Alura.</h4>
+    <p>Desenvolvido por <em>Breno Cordeiro</em> para treinar curso da Alura.</p>
   </footer>
 </body>
 
