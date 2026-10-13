@@ -1,0 +1,217 @@
+/* ==========================================================
+   historia.css — linha do tempo e seção da camisa 12
+   ========================================================== */
+
+/* ---------- Linha do tempo ---------- */
+.timeline {
+  --dot: 1rem;
+  --year-col: 10.5rem;
+  --gap: 3rem;
+
+  position: relative;
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+/* Trilho e barra de progresso */
+.timeline::before,
+.timeline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--year-col) + (var(--gap) / 2));
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+.timeline::before {
+  background: var(--line);
+}
+
+.timeline::after {
+  background: linear-gradient(180deg, var(--green), #b6f06a);
+  box-shadow: 0 0 14px rgba(105, 190, 40, 0.6);
+  transform-origin: top;
+}
+
+/* Cada capítulo: ano à esquerda, texto à direita */
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--year-col) minmax(0, 1fr);
+  column-gap: var(--gap);
+  align-items: start;
+}
+
+/* Ponto sobre o trilho */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: calc(var(--year-col) + (var(--gap) / 2) - (var(--dot) / 2));
+  width: var(--dot);
+  height: var(--dot);
+  background: var(--bg);
+  border: 3px solid var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(105, 190, 40, 0.15);
+}
+
+.timeline-year {
+  color: var(--grey);
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-align: right;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+/* Cartão de leitura */
+.timeline-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(
+    160deg,
+    rgba(0, 34, 68, 0.5),
+    rgba(8, 20, 38, 0.95)
+  );
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  transition: border-color 0.25s ease;
+}
+
+.timeline-card h3 {
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+}
+
+.timeline-card p {
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Hover: ano e borda acendem em verde, como a navegação */
+.timeline-item:hover .timeline-year {
+  color: var(--green);
+}
+
+.timeline-item:hover .timeline-card {
+  border-color: var(--green);
+}
+
+/* Último capítulo em destaque */
+.timeline-item--final .timeline-year {
+  color: var(--green);
+}
+
+.timeline-item--final .timeline-card {
+  border-color: var(--green);
+  background:
+    radial-gradient(
+      70% 60% at 90% 0%,
+      rgba(105, 190, 40, 0.22),
+      transparent 70%
+    ),
+    linear-gradient(160deg, rgba(0, 34, 68, 0.7), rgba(8, 20, 38, 0.95));
+}
+
+/* Barra verde que cresce com a rolagem (Chrome, Edge e Brave) */
+@supports (animation-timeline: view()) {
+  .timeline::after {
+    transform: translateX(-50%) scaleY(0);
+    animation: line-grow linear both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 75%;
+  }
+}
+
+@keyframes line-grow {
+  to {
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+/* ---------- A camisa 12 ---------- */
+.twelve-section {
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(50% 70% at 20% 50%, rgba(0, 34, 68, 0.8), transparent 70%),
+    var(--bg);
+}
+
+.twelve-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.twelve-number {
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(10rem, 26vw, 22rem);
+  font-weight: 800;
+  line-height: 0.8;
+  text-align: center;
+  -webkit-text-stroke: 3px var(--green);
+  user-select: none;
+}
+
+.twelve-copy h2 {
+  margin-bottom: 1.5rem;
+}
+
+.twelve-copy p:not(.eyebrow) {
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 800px) {
+  .timeline::before,
+  .timeline::after {
+    left: 0.5rem;
+  }
+
+  .timeline-item {
+    display: block;
+    padding-left: 2.25rem;
+  }
+
+  .timeline-item::before {
+    top: 0.55rem;
+    left: calc(0.5rem - (var(--dot) / 2));
+  }
+
+  .timeline-year {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  .twelve-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Quem prefere menos movimento vê a barra completa e parada */
+@media (prefers-reduced-motion: reduce) {
+  .timeline::after {
+    animation: none !important;
+    transform: translateX(-50%);
+  }
+}

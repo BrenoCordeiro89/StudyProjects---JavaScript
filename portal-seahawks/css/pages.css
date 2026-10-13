@@ -1,0 +1,239 @@
+/* ==========================================================
+   pages.css — estrutura comum das páginas internas
+   ========================================================== */
+
+main .container {
+  width: min(100% - (var(--gutter) * 2), var(--container));
+  margin-inline: auto;
+}
+
+/* ---------- Cabeçalho da página ---------- */
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(3.5rem, 7vw, 6rem);
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(55% 90% at 85% 30%, rgba(0, 34, 68, 0.95), transparent 70%),
+    radial-gradient(
+      40% 50% at 5% 100%,
+      rgba(105, 190, 40, 0.12),
+      transparent 70%
+    ),
+    linear-gradient(180deg, var(--bg), var(--bg-soft));
+}
+
+/* Ano gigante vazado, no mesmo estilo do "12" da home */
+.page-year {
+  position: absolute;
+  right: -0.04em;
+  bottom: -0.16em;
+  z-index: -1;
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(9rem, 28vw, 24rem);
+  font-weight: 800;
+  line-height: 0.8;
+  -webkit-text-stroke: 2px rgba(105, 190, 40, 0.3);
+  user-select: none;
+}
+
+.page-hero-line {
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent 70%);
+}
+
+.breadcrumb {
+  margin-bottom: 2rem;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  color: var(--grey);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: 0.6rem;
+  color: var(--line);
+}
+
+.breadcrumb a:hover {
+  color: var(--green);
+}
+
+.breadcrumb [aria-current] {
+  color: var(--white);
+}
+
+.page-title {
+  font-size: clamp(3.25rem, 8.5vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+}
+
+.title-line {
+  display: block;
+}
+
+.title-line--outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--white);
+}
+
+.title-line--accent {
+  color: var(--green);
+}
+
+.page-lead {
+  max-width: 34rem;
+  margin-top: 2rem;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--green);
+  color: var(--white);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* ---------- Faixa de números ---------- */
+.stats-strip {
+  background: rgba(8, 20, 38, 0.6);
+  border-bottom: 1px solid var(--line);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stat {
+  padding: 2rem 1.5rem;
+}
+
+.stat + .stat {
+  border-left: 1px solid var(--line);
+}
+
+.stat strong {
+  display: block;
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stat span {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Etiqueta ---------- */
+.tag {
+  align-self: flex-start;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--green);
+  border-radius: var(--radius);
+  color: var(--green);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tag--solid {
+  background: var(--green);
+  color: var(--bg);
+}
+
+/* ---------- Próxima página ---------- */
+/* ---------- Capítulo anterior e próximo ---------- */
+.chapter-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-block: 1px solid var(--line);
+}
+
+.chapter-nav .next-link + .next-link {
+  border-left: 1px solid var(--line);
+}
+
+.next-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter);
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.next-link .eyebrow {
+  margin-bottom: 0;
+}
+
+.next-title {
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-wrap: balance;
+  -webkit-text-stroke: 2px var(--white);
+  transition:
+    color 0.3s ease,
+    -webkit-text-stroke-color 0.3s ease;
+}
+
+.next-link:hover {
+  background: rgba(105, 190, 40, 0.08);
+}
+
+.next-link:hover .next-title {
+  color: var(--green);
+  -webkit-text-stroke-color: var(--green);
+}
+
+@media (max-width: 700px) {
+  .chapter-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .chapter-nav .next-link + .next-link {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+}
+/* ---------- Responsivo ---------- */
+@media (max-width: 700px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat:nth-child(3) {
+    border-left: 0;
+  }
+
+  .stat:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+}
