@@ -1,300 +1,341 @@
-/* =========================================
-   COMUNIDADE — A PAIXÃO QUE FAZ BARULHO
-========================================= */
+/* ==========================================================
+   comunity.css — Torcidômetro, Notícias, Comunidade (Loja + Redes)
+   ========================================================== */
 
-.fan-section {
-  position: relative;
-  padding: var(--section-space) 24px;
-  overflow: hidden;
-
-  background:
-    radial-gradient(ellipse at 85% 50%, rgb(0 118 168 / 16%), transparent 45%),
-    linear-gradient(120deg, #002244 0%, #071526 55%, #050b14 100%);
-
-  border-top: 1px solid var(--border-green);
-  border-bottom: 1px solid var(--border-green);
-}
-
-.fan-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-  align-items: center;
-  gap: 56px;
-
-  width: min(100%, var(--container-width));
+/* Rede de segurança: garante a margem lateral do container no <main> */
+main .container {
+  width: min(100% - (var(--gutter) * 2), var(--container));
   margin-inline: auto;
 }
 
-.fan-copy {
-  min-width: 0;
-}
-
-.fan-copy h2 {
-  max-width: 600px;
-  margin-bottom: 20px;
-}
-
-.fan-copy p {
-  max-width: 620px;
-  margin-bottom: 24px;
-
-  color: var(--text-secondary);
-  line-height: 1.9;
-}
-
-/* =========================================
-   IMAGEM DA COMUNIDADE
-========================================= */
-
-/* Funciona com a imagem dentro de .fan-visual
-   ou diretamente dentro de .fan-layout. */
-
-.fan-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 0;
-  width: 100%;
-}
-
-.fan-visual img,
-.fan-image {
-  display: block;
-
-  width: 100%;
-  max-width: 520px;
-  height: auto;
-
-  object-fit: contain;
-  object-position: center;
-
-  filter: drop-shadow(0 20px 32px rgb(0 0 0 / 35%));
-
-  transition:
-    transform 0.35s ease,
-    filter 0.35s ease;
-}
-
-.fan-visual img:hover,
-.fan-image:hover {
-  transform: translateY(-5px);
-
-  filter: drop-shadow(0 24px 34px rgb(105 190 40 / 18%));
-}
-
-/* =========================================
-   PAINEL DO TORCIDÔMETRO
-========================================= */
-
+/* Superfície compartilhada (mesmo visual dos feature-cards) */
+.news-card,
+.shop-card,
+.social-card,
 .decibel-panel {
   position: relative;
-  width: 100%;
-  min-width: 0;
-  padding: 34px;
-
   overflow: hidden;
-
-  background: linear-gradient(145deg, rgb(14 27 43 / 98%), rgb(5 11 20 / 98%));
-
-  border: 1px solid var(--border-green);
-  border-radius: 8px;
-
-  box-shadow: 0 18px 45px rgb(0 0 0 / 25%);
+  background: linear-gradient(
+    160deg,
+    rgba(0, 34, 68, 0.55),
+    rgba(8, 20, 38, 0.95)
+  );
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  transition: border-color 0.25s ease;
 }
 
-.decibel-panel h3 {
-  margin-bottom: 8px;
+.news-card:hover,
+.shop-card:hover,
+.social-card:hover {
+  border-color: var(--green);
+}
 
-  color: var(--text-primary);
-
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  line-height: 1.2;
+.news-tag {
+  align-self: flex-start;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--green);
+  border-radius: var(--radius);
+  color: var(--green);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-.decibel-panel p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.7;
+/* ---------- Torcidômetro ---------- */
+.decibel-panel {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
 }
 
-/* Barras decorativas do medidor */
-
-.decibel-meter {
+.decibel-heading {
   display: flex;
-  align-items: flex-end;
-  gap: 7px;
-
-  width: 100%;
-  height: 110px;
-  margin: 28px 0;
-
-  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--grey);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
-
-.decibel-meter span {
-  display: block;
-  flex: 1 1 0;
-
-  min-width: 0;
-  height: 25%;
-
-  background: var(--seahawks-green);
-  border-radius: 3px 3px 0 0;
-}
-
-.decibel-meter span:nth-child(2) {
-  height: 42%;
-}
-
-.decibel-meter span:nth-child(3) {
-  height: 34%;
-}
-
-.decibel-meter span:nth-child(4) {
-  height: 58%;
-}
-
-.decibel-meter span:nth-child(5) {
-  height: 48%;
-}
-
-.decibel-meter span:nth-child(6) {
-  height: 72%;
-}
-
-.decibel-meter span:nth-child(7) {
-  height: 62%;
-}
-
-.decibel-meter span:nth-child(8) {
-  height: 86%;
-}
-
-.decibel-meter span:nth-child(9) {
-  height: 74%;
-}
-
-.decibel-meter span:nth-child(10) {
-  height: 100%;
-  background: var(--seahawks-green-light);
-}
-
-/* Indicador de recurso em desenvolvimento */
 
 .decibel-status {
-  display: inline-block;
-  margin-top: 18px;
-  padding: 6px 12px;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
 
-  color: var(--seahawks-green-light);
-  background: rgb(105 190 40 / 10%);
+.decibel-panel.is-active .decibel-status {
+  border-color: var(--green);
+  color: var(--green);
+}
 
-  font-size: 0.75rem;
+.decibel-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-block: 1.25rem 1rem;
+  font-family: var(--font-display);
   font-weight: 800;
-  letter-spacing: 1.5px;
+  line-height: 0.85;
   text-transform: uppercase;
-
-  border: 1px solid var(--border-green);
-  border-radius: 3px;
 }
 
-/* =========================================
-   SOBRE O PROJETO
-========================================= */
-
-.about-section {
-  padding: var(--section-space) 24px;
+.decibel-value > span:first-child {
+  color: var(--green);
+  font-size: clamp(5rem, 12vw, 8rem);
+  font-variant-numeric: tabular-nums;
 }
 
-.about-content {
-  width: min(100%, 850px);
-  margin-inline: auto;
+.decibel-fill {
+  width: 82%;
+  height: 100%;
+  background: linear-gradient(90deg, #3f8a14, var(--green), #b6f06a);
+  border-radius: inherit;
+}
+.decibel-unit {
+  color: var(--grey);
+  font-size: 1.75rem;
+}
+
+.decibel-track {
+  height: 0.9rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+}
+
+.decibel-panel.is-loud .decibel-fill {
+  box-shadow: 0 0 18px rgba(105, 190, 40, 0.8);
+}
+
+.decibel-panel.is-loud {
+  border-color: var(--green);
+}
+
+.decibel-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.6rem;
+  color: var(--grey);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.decibel-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-block: 1.5rem;
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--line);
+}
+
+.decibel-stats p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.decibel-stats span {
+  color: var(--grey);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.decibel-stats strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.decibel-panel .button {
+  width: 100%;
+  justify-content: center;
+}
+
+.decibel-footer {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
   text-align: center;
 }
 
-.about-content p {
-  margin-bottom: 18px;
-
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.95;
+/* ---------- Notícias ---------- */
+.news-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.25rem;
 }
 
-/* =========================================
-   NEWSLETTER
-========================================= */
-
-.newsletter-section {
-  padding: 70px 24px 100px;
+.news-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.75rem;
 }
 
-.newsletter-panel {
-  width: min(100%, 900px);
-  margin-inline: auto;
-  padding: 48px;
+.news-card p {
+  color: var(--muted);
+}
 
-  text-align: center;
+.news-card h3 {
+  font-size: 1.6rem;
+}
 
+.news-card--featured {
+  grid-row: span 2;
+  justify-content: flex-end;
+  min-height: 24rem;
   background:
     radial-gradient(
-      ellipse at top right,
-      rgb(0 118 168 / 16%),
-      transparent 50%
+      70% 60% at 85% 0%,
+      rgba(105, 190, 40, 0.18),
+      transparent 70%
     ),
-    linear-gradient(145deg, #0e1b2b, #07111e);
-
-  border: 1px solid var(--border-green);
-  border-radius: 8px;
-
-  box-shadow: 0 20px 55px rgb(0 0 0 / 25%);
+    linear-gradient(160deg, rgba(0, 34, 68, 0.7), rgba(8, 20, 38, 0.95));
 }
 
-.newsletter-panel h2 {
-  margin-bottom: 16px;
+.news-card--featured h3 {
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
 }
 
-.newsletter-panel > p {
-  max-width: 620px;
-  margin: 0 auto 28px;
-
-  color: var(--text-secondary);
+.news-meta {
+  margin-top: auto;
+  color: var(--grey);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-.newsletter-form {
+/* ---------- Comunidade ---------- */
+.community-block + .community-block {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.block-title {
+  margin-bottom: 0.75rem;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+.block-intro {
+  max-width: 36rem;
+  margin-bottom: 2rem;
+  color: var(--muted);
+}
+
+/* Loja */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+}
+
+.shop-card {
   display: flex;
-  gap: 12px;
-
-  width: min(100%, 620px);
-  margin-inline: auto;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.75rem;
 }
 
-.newsletter-form input {
+.shop-card h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.shop-card p {
   flex: 1;
-  min-width: 0;
-  min-height: 52px;
-  padding: 12px 16px;
-
-  color: var(--text-primary);
-  background: #050b14;
-
-  border: 1px solid rgb(255 255 255 / 20%);
-  border-radius: 4px;
+  color: var(--muted);
 }
 
-.newsletter-form input::placeholder {
-  color: #8291a2;
+.shop-note {
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--green);
+  color: var(--grey);
+  font-size: 0.9rem;
 }
 
-.newsletter-form input:focus {
-  outline: 2px solid var(--seahawks-green);
-  outline-offset: 2px;
+/* Redes sociais */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
 }
 
-.newsletter-form input:disabled,
-.newsletter-form button:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.social-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--green);
+  border-radius: 0.4rem;
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.social-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.social-text strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.social-text small {
+  color: var(--grey);
+}
+
+.social-arrow {
+  color: var(--grey);
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.social-card:hover .social-text strong,
+.social-card:hover .social-arrow {
+  color: var(--green);
+}
+
+.social-card:hover .social-arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-card--featured {
+    grid-row: auto;
+    min-height: 16rem;
+  }
 }

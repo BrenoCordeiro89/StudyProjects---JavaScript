@@ -158,6 +158,334 @@
             <a class="card-link" href="#sobre">Ver recordes <span aria-hidden="true">→</span></a>
           </article>
 
-          <article class="feature-card" id="noticias">
+          <article class="feature-card">
             <span class="card-number" aria-hidden="true">05</span>
-            <span class="card-icon"
+            <span class="card-icon" aria-hidden="true">▤</span>
+            <h3>Notícias</h3>
+            <p>Um espaço preparado para acompanhar novidades e acontecimentos da franquia.</p>
+            <a class="card-link" href="#noticias">Acompanhar notícias <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="feature-card">
+            <span class="card-number" aria-hidden="true">06</span>
+            <span class="card-icon" aria-hidden="true">◎</span>
+            <h3>Comunidade</h3>
+            <p>Loja do torcedor, redes sociais e a paixão compartilhada pela 12.</p>
+            <a class="card-link" href="#comunidade">Fazer parte <span aria-hidden="true">→</span></a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TORCIDÔMETRO -->
+    <section class="fan-section section-padding" aria-labelledby="fan-title">
+      <div class="container fan-layout">
+
+        <div class="fan-copy">
+          <p class="eyebrow">The 12th Man</p>
+
+          <h2 id="fan-title">
+            O estádio treme.<br>
+            <span>A 12 faz história.</span>
+          </h2>
+
+          <p>
+            A torcida de Seattle é parte da identidade da franquia.
+            Ative o microfone, grite o mais alto que puder e veja
+            quanto barulho a sua 12 faz.
+          </p>
+
+          <p class="fan-note">
+            Esta é uma representação visual. A medição de decibéis
+            será implementada em uma etapa futura.
+          </p>
+        </div>
+
+        <div class="decibel-panel" aria-label="Demonstração visual do torcidômetro">
+          <div class="decibel-heading">
+            <span class="decibel-label">Torcidômetro</span>
+            <span class="decibel-status" id="decibel-status">Em breve</span>
+          </div>
+
+          <p class="decibel-value">
+            <span id="decibel-number">98</span>
+            <span class="decibel-unit">dB</span>
+          </p>
+
+          <div class="decibel-track" aria-hidden="true">
+            <div class="decibel-fill" id="decibel-fill"></div>
+          </div>
+
+          <div class="decibel-scale" aria-hidden="true">
+            <span>0</span><span>40</span><span>80</span><span>120 dB</span>
+          </div>
+
+          <div class="decibel-stats">
+            <p><span>Pico</span><strong id="decibel-peak">98 dB</strong></p>
+            <p><span>Nível</span><strong id="decibel-level">Estádio vibrando</strong></p>
+          </div>
+
+          <button class="button button-primary" id="decibel-toggle" type="button" disabled>
+            Ativar microfone
+          </button>
+
+          <p class="decibel-footer" id="decibel-message">
+            A próxima voz pode ser a sua.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- NOTÍCIAS -->
+    <section class="news-section section-padding" id="noticias" aria-labelledby="news-title">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Notícias</p>
+            <h2 id="news-title">Direto do <span>campo.</span></h2>
+          </div>
+          <p class="section-description">
+            Espaço reservado para cobertura de jogos, elenco e
+            bastidores. Os primeiros textos chegam em breve.
+          </p>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card news-card--featured">
+            <span class="news-tag">Jogos</span>
+            <h3>Cobertura da próxima partida</h3>
+            <p>Escalações, pontos de atenção e o que esperar do confronto, tudo em um só lugar.</p>
+            <span class="news-meta">Em breve</span>
+          </article>
+
+          <article class="news-card">
+            <span class="news-tag">Elenco</span>
+            <h3>Análise do elenco</h3>
+            <p>Quem está em alta, quem volta de lesão e quem pode surpreender.</p>
+            <span class="news-meta">Em breve</span>
+          </article>
+
+          <article class="news-card">
+            <span class="news-tag">Torcida</span>
+            <h3>Bastidores da 12</h3>
+            <p>Histórias de quem faz o estádio tremer, dentro e fora de Seattle.</p>
+            <span class="news-meta">Em breve</span>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMUNIDADE: LOJA + REDES -->
+    <section class="community-section section-padding" id="comunidade" aria-labelledby="community-title">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Comunidade</p>
+            <h2 id="community-title">A 12 não joga <span>sozinha.</span></h2>
+          </div>
+          <p class="section-description">
+            Onde o torcedor encontra o que vestir e com quem torcer.
+          </p>
+        </div>
+
+        <div class="community-block" id="loja">
+          <h3 class="block-title">Loja do torcedor</h3>
+          <p class="block-intro">
+            Um guia para encontrar itens da torcida em lojas oficiais.
+            O portal não vende produtos.
+          </p>
+
+          <div class="shop-grid">
+            <article class="shop-card">
+              <span class="news-tag">Vestuário</span>
+              <h4>Camisas e jerseys</h4>
+              <p>Para vestir as cores de Seattle nos dias de jogo.</p>
+              <a class="card-link" href="#">Ver lojas oficiais <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="shop-card">
+              <span class="news-tag">Acessórios</span>
+              <h4>Bonés e agasalhos</h4>
+              <p>Peças para o dia a dia e para encarar o frio na arquibancada.</p>
+              <a class="card-link" href="#">Ver lojas oficiais <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="shop-card">
+              <span class="news-tag">Colecionáveis</span>
+              <h4>Itens de coleção</h4>
+              <p>Capacetes, miniaturas e lembranças para quem guarda a história.</p>
+              <a class="card-link" href="#">Ver lojas oficiais <span aria-hidden="true">→</span></a>
+            </article>
+          </div>
+
+          <p class="shop-note">
+            Projeto sem fins lucrativos: este portal não recebe comissão
+            nem vende nenhum dos produtos indicados.
+          </p>
+        </div>
+
+        <div class="community-block" id="redes">
+          <h3 class="block-title">Redes sociais</h3>
+          <p class="block-intro">
+            Acompanhe o portal e converse com outros torcedores.
+          </p>
+
+          <ul class="social-grid">
+            <li><a class="social-card" href="#" aria-label="Instagram do portal">
+                <span class="social-icon" aria-hidden="true">IG</span>
+                <span class="social-text"><strong>Instagram</strong><small>@seu_perfil</small></span>
+                <span class="social-arrow" aria-hidden="true">→</span>
+              </a></li>
+            <li><a class="social-card" href="#" aria-label="YouTube do portal">
+                <span class="social-icon" aria-hidden="true">YT</span>
+                <span class="social-text"><strong>YouTube</strong><small>@seu_canal</small></span>
+                <span class="social-arrow" aria-hidden="true">→</span>
+              </a></li>
+            <li><a class="social-card" href="#" aria-label="X do portal">
+                <span class="social-icon" aria-hidden="true">X</span>
+                <span class="social-text"><strong>X</strong><small>@seu_perfil</small></span>
+                <span class="social-arrow" aria-hidden="true">→</span>
+              </a></li>
+            <li><a class="social-card" href="#" aria-label="Grupo da comunidade">
+                <span class="social-icon" aria-hidden="true">DC</span>
+                <span class="social-text"><strong>Grupo da 12</strong><small>Em breve</small></span>
+                <span class="social-arrow" aria-hidden="true">→</span>
+              </a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="about-section section-padding" id="sobre" aria-labelledby="about-title">
+      <div class="container about-content">
+
+        <p class="eyebrow">A essência de Seattle</p>
+
+        <h2 id="about-title">
+          Uma cidade.<br>
+          Uma torcida.<br>
+          <span>Uma identidade.</span>
+        </h2>
+
+        <p>
+          Este portal independente nasce para reunir
+          história, informação e cultura de torcedores
+          do Seattle Seahawks em um só lugar.
+        </p>
+
+        <a class="text-link" href="#inicio">Voltar ao início <span aria-hidden="true">↑</span></a>
+
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section section-padding" id="newsletter" aria-labelledby="newsletter-title">
+      <div class="container">
+
+        <div class="newsletter-panel">
+          <div class="newsletter-copy">
+            <p class="eyebrow">Fique por dentro</p>
+
+            <h2 id="newsletter-title">
+              A próxima jogada<br>
+              começa <span>aqui.</span>
+            </h2>
+
+            <p>
+              Este espaço será dedicado a futuras
+              novidades, conteúdos e atualizações
+              para a comunidade Seahawks.
+            </p>
+          </div>
+
+          <div class="newsletter-form-area">
+            <form class="newsletter-form">
+              <label for="newsletter-email">Seu e-mail</label>
+
+              <input type="email" id="newsletter-email" name="email" placeholder="voce@exemplo.com" autocomplete="email"
+                disabled>
+
+              <button class="button button-primary" type="button" disabled>Cadastro em breve</button>
+
+              <p class="form-note">
+                O cadastro ainda não está disponível.
+                Nenhum dado será enviado.
+              </p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+
+      <div class="footer-about">
+        <a class="footer-brand" href="#inicio">
+          <span class="footer-brand-number" aria-hidden="true">12</span>
+          Seahawks Brasil
+        </a>
+        <p class="footer-tagline">
+          Um portal feito por torcedor, para torcedores. Sem
+          patrocínio, sem anúncios e sem ligação com a franquia.
+        </p>
+      </div>
+
+      <nav class="footer-column" aria-label="Explorar">
+        <h3 class="footer-title">Explorar</h3>
+        <ul class="footer-links">
+          <li><a href="#historia">História</a></li>
+          <li><a href="#idolos">Ídolos</a></li>
+          <li><a href="#curiosidades">Curiosidades</a></li>
+          <li><a href="#recordes">Recordes</a></li>
+          <li><a href="#noticias">Notícias</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-column" aria-label="Comunidade">
+        <h3 class="footer-title">Comunidade</h3>
+        <ul class="footer-links">
+          <li><a href="#loja">Loja do torcedor</a></li>
+          <li><a href="#redes">Redes sociais</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-column">
+        <h3 class="footer-title">Sobre o projeto</h3>
+        <ul class="footer-badges">
+          <li>Projeto autoral</li>
+          <li>Sem fins lucrativos</li>
+          <li>Não oficial</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="container footer-legal-bar">
+      <p class="footer-legal">
+        Projeto autoral e sem fins lucrativos, criado por um torcedor para
+        estudo e diversão. Não é oficial e não possui vínculo, patrocínio ou
+        aprovação do Seattle Seahawks ou da NFL. Nomes e marcas citados
+        pertencem aos seus respectivos proprietários.
+      </p>
+      <a class="back-to-top" href="#inicio">Voltar ao topo ↑</a>
+    </div>
+
+    <p class="footer-wordmark" aria-hidden="true">Somos 12</p>
+  </footer>
+
+
+</body>
+
+</html>

@@ -131,7 +131,6 @@ h2 span {
   background: currentColor;
 }
 
-/* Cabeçalho de seção (título + descrição lado a lado) */
 .section-heading {
   display: flex;
   flex-wrap: wrap;
@@ -141,9 +140,14 @@ h2 span {
   margin-bottom: 3rem;
 }
 
-.section-description {
+.section-heading .section-description {
   max-width: 28rem;
-  color: var(--muted);
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--green);
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 /* Botões */
