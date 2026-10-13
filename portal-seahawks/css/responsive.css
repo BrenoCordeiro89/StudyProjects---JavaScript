@@ -1,0 +1,30 @@
+/* Comunidade em telas pequenas */
+
+.fan-layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
+}
+
+.fan-copy {
+  text-align: center;
+}
+
+.fan-copy p {
+  margin-inline: auto;
+}
+
+.fan-visual {
+  width: 100%;
+}
+
+.fan-visual img,
+.fan-image {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.decibel-panel {
+  width: 100%;
+  padding: 26px;
+}

@@ -1,0 +1,28 @@
+.site-header {
+  position: relative;
+  width: 100%;
+  background: #050b14;
+}
+
+.header-hero {
+  width: 100%;
+  overflow: hidden;
+
+  background: linear-gradient(180deg, #050b14 0%, #002244 100%);
+}
+
+.header-brand {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.brand-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 440px;
+
+  object-fit: cover;
+  object-position: center;
+}

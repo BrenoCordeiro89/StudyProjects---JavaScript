@@ -1,0 +1,84 @@
+/* =========================================
+   RODAPÉ
+========================================= */
+
+.site-footer {
+  padding: 48px 24px 24px;
+
+  background: #03070d;
+  border-top: 2px solid var(--seahawks-green);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+
+  width: min(100%, var(--container-width));
+  margin-inline: auto;
+  padding-bottom: 30px;
+}
+
+.footer-brand {
+  max-width: 420px;
+}
+
+.footer-brand h2 {
+  margin-bottom: 8px;
+
+  color: var(--seahawks-green-light);
+
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.footer-brand p,
+.footer-legal {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.footer-legal {
+  text-align: right;
+}
+
+.footer-legal a {
+  color: var(--seahawks-green-light);
+  text-decoration: none;
+}
+
+.footer-legal a:hover {
+  color: #ffffff;
+}
+
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  margin-top: 18px;
+
+  color: var(--seahawks-green-light);
+  background: var(--surface);
+
+  border: 1px solid var(--border-green);
+  border-radius: 4px;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back-to-top:hover {
+  color: #050b14;
+  background: var(--seahawks-green-light);
+  transform: translateY(-3px);
+}

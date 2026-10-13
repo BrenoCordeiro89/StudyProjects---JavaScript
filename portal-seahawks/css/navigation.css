@@ -1,0 +1,124 @@
+.main-navigation {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+
+  background: linear-gradient(90deg, #050b14 0%, #002244 50%, #050b14 100%);
+
+  border-top: 1px solid var(--border-green);
+  border-bottom: 2px solid var(--seahawks-green);
+
+  box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+}
+
+.main-navigation .container {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+.navigation-list {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.navigation-list li {
+  min-width: 0;
+}
+
+.navigation-list li + li {
+  border-left: 1px solid rgb(255 255 255 / 12%);
+}
+
+.navigation-list a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 78px;
+  padding: 16px 8px;
+
+  color: #f4f7fa;
+  background: transparent;
+
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  border-bottom: 4px solid transparent;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Linha inferior luminosa */
+
+.navigation-list a::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  width: 0;
+  height: 4px;
+
+  background: var(--seahawks-green-light);
+  box-shadow: 0 0 16px rgb(105 190 40 / 70%);
+
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+
+/* Hover verde */
+
+.navigation-list a:hover {
+  color: #07120a;
+
+  background: linear-gradient(180deg, #83e63d 0%, #69be28 100%);
+
+  box-shadow:
+    inset 0 0 20px rgb(255 255 255 / 10%),
+    0 0 20px rgb(105 190 40 / 28%);
+}
+
+.navigation-list a:hover::after {
+  width: 100%;
+}
+
+.navigation-list a[aria-current="page"] {
+  color: var(--seahawks-green-light);
+  background: rgb(105 190 40 / 9%);
+}
+
+.navigation-list a[aria-current="page"]::after {
+  width: 45%;
+}
+
+/* Foco pelo teclado */
+
+.navigation-list a:focus-visible {
+  z-index: 2;
+
+  outline: 3px solid var(--seahawks-green-light);
+  outline-offset: -5px;
+
+  color: var(--seahawks-green-light);
+  background: var(--seahawks-navy);
+}

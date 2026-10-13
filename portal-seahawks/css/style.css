@@ -1,0 +1,253 @@
+@import url("./global.css");
+@import url("./header.css");
+@import url("./navigation.css");
+@import url("./hero.css");
+@import url("./cards.css");
+@import url("./community.css");
+@import url("./footer.css");
+@import url("./responsive.css");
+
+/* =========================================
+   1. VARIÁVEIS GLOBAIS
+========================================= */
+
+:root {
+  --seahawks-navy: #002244;
+  --seahawks-green: #69be28;
+  --seahawks-green-light: #83e63d;
+  --seahawks-blue: #0076a8;
+
+  --background: #050b14;
+  --background-soft: #0a1421;
+  --surface: #0e1b2b;
+  --surface-hover: #13263a;
+
+  --text-primary: #f4f7fa;
+  --text-secondary: #aab8c7;
+
+  --border: rgb(255 255 255 / 10%);
+  --border-green: rgb(105 190 40 / 35%);
+
+  --font-body: "Inter", Arial, sans-serif;
+  --font-heading: "Barlow Condensed", Impact, sans-serif;
+
+  --container-width: 1200px;
+  --section-space: 100px;
+}
+
+/* =========================================
+   2. RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 30px;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.7;
+
+  background:
+    radial-gradient(ellipse at 85% 15%, rgb(0 118 168 / 13%), transparent 35%),
+    linear-gradient(180deg, #050b14 0%, #0a1421 28%, #002244 72%, #050b14 100%);
+}
+
+/* =========================================
+   3. ELEMENTOS GERAIS
+========================================= */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  color: #050b14;
+  background: var(--seahawks-green);
+}
+
+.container {
+  width: min(100% - 48px, var(--container-width));
+  margin-inline: auto;
+}
+
+.section-padding {
+  padding-block: var(--section-space);
+}
+
+section[id] {
+  scroll-margin-top: 24px;
+}
+
+/* =========================================
+   4. ACESSIBILIDADE
+========================================= */
+
+.skip-link {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+
+  padding: 12px 18px;
+
+  color: #050b14;
+  background: var(--seahawks-green-light);
+
+  font-weight: 800;
+  text-decoration: none;
+
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* =========================================
+   5. TÍTULOS DE SEÇÃO
+========================================= */
+
+.section-heading {
+  max-width: 780px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+
+  color: var(--seahawks-green-light);
+
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.section-heading h2,
+.fan-copy h2,
+.about-content h2,
+.newsletter-panel h2 {
+  margin-bottom: 18px;
+
+  color: var(--text-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(2.3rem, 4vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  text-transform: uppercase;
+
+  text-wrap: balance;
+}
+
+.section-heading h2 span,
+.fan-copy h2 span,
+.about-content h2 span {
+  color: var(--seahawks-green-light);
+}
+
+.section-heading p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* =========================================
+   6. BOTÕES REUTILIZÁVEIS
+========================================= */
+
+.button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 52px;
+  padding: 14px 24px;
+
+  color: #07120a;
+  background: var(--seahawks-green);
+
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+
+  border: 2px solid var(--seahawks-green);
+  border-radius: 4px;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.button:hover,
+.btn:hover {
+  color: var(--seahawks-green-light);
+  background: var(--seahawks-navy);
+
+  border-color: var(--seahawks-green-light);
+
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgb(105 190 40 / 22%);
+}
+
+.button:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--seahawks-green-light);
+  outline-offset: 4px;
+}
+
+.button-secondary,
+.btn-secondary {
+  color: var(--text-primary);
+  background: transparent;
+  border-color: rgb(255 255 255 / 35%);
+}
+
+.button-secondary:hover,
+.btn-secondary:hover {
+  color: #07120a;
+  background: var(--seahawks-green-light);
+  border-color: var(--seahawks-green-light);
+}
