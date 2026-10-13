@@ -1,124 +1,128 @@
+/* ==========================================================
+   navigation.css — barra de navegação (depende de style.css)
+   ========================================================== */
+
 .main-navigation {
+  --font-nav: "Big Shoulders Display", var(--font-display);
+
   position: relative;
-  z-index: 10;
   width: 100%;
-
-  background: linear-gradient(90deg, #050b14 0%, #002244 50%, #050b14 100%);
-
-  border-top: 1px solid var(--border-green);
-  border-bottom: 2px solid var(--seahawks-green);
-
-  box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
+/* Linha verde que conversa com o fim do hero */
+.main-navigation::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent 70%);
+  pointer-events: none;
+}
+
+/* A barra ocupa a tela inteira, sem o limite do .container */
 .main-navigation .container {
   width: 100%;
   max-width: none;
-  padding: 0;
+  margin: 0;
 }
 
 .navigation-list {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-
+  display: flex;
   width: 100%;
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
 }
 
+/* Todos os botões com a mesma largura */
 .navigation-list li {
+  flex: 1 1 0;
   min-width: 0;
 }
 
 .navigation-list li + li {
-  border-left: 1px solid rgb(255 255 255 / 12%);
+  border-left: 1px solid var(--line);
 }
 
 .navigation-list a {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 100%;
-  min-height: 78px;
-  padding: 16px 8px;
-
-  color: #f4f7fa;
-  background: transparent;
-
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
+  min-height: 5rem;
+  padding: 1.25rem 0.5rem;
+  color: var(--white);
+  font-family: var(--font-nav);
+  font-size: clamp(1.3rem, 1.9vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
   text-align: center;
   text-transform: uppercase;
-  text-decoration: none;
-
-  border-bottom: 4px solid transparent;
-
+  white-space: nowrap;
   transition:
-    color 0.25s ease,
-    background 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    color 0.2s ease,
+    background-color 0.25s ease,
+    text-shadow 0.25s ease;
 }
 
-/* Linha inferior luminosa */
-
+/* Barra verde grossa que cresce da esquerda para a direita */
 .navigation-list a::after {
   content: "";
-
   position: absolute;
-  left: 50%;
-  bottom: 0;
-
-  width: 0;
-  height: 4px;
-
-  background: var(--seahawks-green-light);
-  box-shadow: 0 0 16px rgb(105 190 40 / 70%);
-
-  transform: translateX(-50%);
-  transition: width 0.25s ease;
+  inset: auto 0 0;
+  height: 5px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
-/* Hover verde */
-
+/* Hover: letras verdes, fundo aceso e barra completa */
 .navigation-list a:hover {
-  color: #07120a;
-
-  background: linear-gradient(180deg, #83e63d 0%, #69be28 100%);
-
-  box-shadow:
-    inset 0 0 20px rgb(255 255 255 / 10%),
-    0 0 20px rgb(105 190 40 / 28%);
+  color: var(--green);
+  background: rgba(105, 190, 40, 0.12);
+  text-shadow: 0 0 22px rgba(105, 190, 40, 0.55);
 }
 
 .navigation-list a:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
+/* Página atual */
 .navigation-list a[aria-current="page"] {
-  color: var(--seahawks-green-light);
-  background: rgb(105 190 40 / 9%);
+  color: var(--green);
+  background: rgba(105, 190, 40, 0.08);
 }
 
 .navigation-list a[aria-current="page"]::after {
-  width: 45%;
+  transform: scaleX(1);
 }
 
-/* Foco pelo teclado */
-
 .navigation-list a:focus-visible {
-  z-index: 2;
+  outline: 2px solid var(--green);
+  outline-offset: -4px;
+}
 
-  outline: 3px solid var(--seahawks-green-light);
-  outline-offset: -5px;
+/* ---------- Telas menores: botões do mesmo tamanho, com rolagem lateral ---------- */
+@media (max-width: 1000px) {
+  .navigation-list {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, #000 90%, transparent);
+  }
 
-  color: var(--seahawks-green-light);
-  background: var(--seahawks-navy);
+  .navigation-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navigation-list li {
+    flex: 1 0 9rem;
+  }
+
+  .navigation-list a {
+    min-height: 4.25rem;
+    font-size: 1.4rem;
+  }
 }
