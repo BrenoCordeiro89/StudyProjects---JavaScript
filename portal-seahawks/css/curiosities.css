@@ -1,0 +1,509 @@
+/* ==========================================================
+   curiosidades.css — v2 (depende de style.css e pages.css)
+   ========================================================== */
+
+/* ---------- Categorias: cor, textura e marcador ---------- */
+[data-cat="franquia"] {
+  --accent: #69be28;
+  --pattern: repeating-linear-gradient(
+    135deg,
+    rgba(105, 190, 40, 0.08) 0 1px,
+    transparent 1px 16px
+  );
+}
+
+[data-cat="cidade"] {
+  --accent: #5db8ff;
+  --pattern:
+    linear-gradient(rgba(93, 184, 255, 0.08) 1px, transparent 1px) 0 0 / 22px
+      22px,
+    linear-gradient(90deg, rgba(93, 184, 255, 0.08) 1px, transparent 1px) 0 0 /
+      22px 22px;
+}
+
+[data-cat="estado"] {
+  --accent: #f2b84b;
+  --pattern: repeating-radial-gradient(
+    circle at 100% 0,
+    rgba(242, 184, 75, 0.1) 0 1px,
+    transparent 1px 18px
+  );
+}
+
+.marker {
+  display: inline-block;
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--accent);
+}
+
+[data-cat="franquia"] .marker {
+  border-radius: 2px;
+}
+
+[data-cat="cidade"] .marker {
+  border-radius: 50%;
+}
+
+[data-cat="estado"] .marker {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* ---------- Legenda ---------- */
+.legend-strip {
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(
+    180deg,
+    rgba(8, 20, 38, 0.8),
+    rgba(5, 11, 20, 0.9)
+  );
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.legend-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 2rem 1.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  background: radial-gradient(
+    70% 120% at 0% 0%,
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    transparent 70%
+  );
+}
+
+.legend-item::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent 80%);
+}
+
+.legend-item + .legend-item {
+  border-left: 1px solid var(--line);
+}
+
+.legend-name {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.legend-name .marker {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+/* ---------- Seções ---------- */
+.facts-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.facts-section + .facts-section {
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--bg), var(--bg-soft));
+}
+
+/* Palavra gigante vazada atrás do título da seção */
+.facts-section .section-heading {
+  position: relative;
+}
+
+.facts-section .section-heading > * {
+  position: relative;
+  z-index: 1;
+}
+
+.facts-section .section-heading::before {
+  position: absolute;
+  top: 50%;
+  left: -0.04em;
+  transform: translateY(-55%);
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+#curiosidades .section-heading::before {
+  content: "Curiosidades";
+}
+
+#recordes .section-heading::before {
+  content: "Recordes";
+}
+
+/* ---------- Painel de cada grupo ---------- */
+.fact-group {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line));
+  border-radius: 1rem;
+  background:
+    radial-gradient(
+      60% 90% at 0% 0%,
+      color-mix(in srgb, var(--accent) 14%, transparent),
+      transparent 70%
+    ),
+    rgba(5, 11, 20, 0.55);
+}
+
+.fact-group + .fact-group {
+  margin-top: 2rem;
+}
+
+.fact-group > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Marca gigante vazada de cada grupo */
+.fact-group::before {
+  position: absolute;
+  top: -0.1em;
+  right: 1.25rem;
+  z-index: 0;
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 14vw, 11rem);
+  font-weight: 800;
+  line-height: 1;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--accent) 28%, transparent);
+  pointer-events: none;
+}
+
+.fact-group[data-cat="franquia"]::before {
+  content: "12";
+}
+
+.fact-group[data-cat="cidade"]::before {
+  content: "SEA";
+}
+
+.fact-group[data-cat="estado"]::before {
+  content: "WA";
+}
+
+.group-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--white);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  letter-spacing: 0.03em;
+}
+
+.group-title .marker {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.group-head::after {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.fact-group[data-cat="franquia"] .group-head::after {
+  content: "Fatos do time e da torcida";
+}
+
+.fact-group[data-cat="cidade"] .group-head::after {
+  content: "Seattle, a casa dos Seahawks";
+}
+
+.fact-group[data-cat="estado"] .group-head::after {
+  content: "Washington, o estado de origem";
+}
+
+/* ---------- Grade em blocos: o primeiro cartão é o destaque ---------- */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* 4 cartões: destaque grande à esquerda e último cartão largo */
+.fact-card:first-child:nth-last-child(4) {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+.fact-card:first-child:nth-last-child(4) ~ .fact-card:nth-child(4) {
+  grid-column: 3 / 5;
+}
+
+/* 3 cartões: o primeiro ocupa o dobro da largura */
+.fact-card:first-child:nth-last-child(3) {
+  grid-column: span 2;
+}
+
+/* ---------- Cartão ---------- */
+.fact-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 14rem;
+  overflow: hidden;
+  padding: 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+  background:
+    var(--pattern),
+    radial-gradient(
+      90% 70% at 100% 0%,
+      color-mix(in srgb, var(--accent) 16%, transparent),
+      transparent 65%
+    ),
+    linear-gradient(160deg, rgba(0, 34, 68, 0.55), rgba(5, 11, 20, 0.96));
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Cada grupo tem um formato de cartão */
+[data-cat="franquia"] .fact-card {
+  border-radius: 0.35rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 1.6rem) 0,
+    100% 1.6rem,
+    100% 100%,
+    0 100%
+  );
+}
+
+[data-cat="cidade"] .fact-card {
+  border-radius: 1.25rem;
+}
+
+[data-cat="estado"] .fact-card {
+  border-radius: 2rem 0.5rem 2rem 0.5rem;
+}
+
+/* Linha da cor do grupo que se estende no hover */
+.fact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 3.5rem;
+  height: 3px;
+  background: var(--accent);
+  transition: width 0.45s ease;
+}
+
+.fact-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.fact-card:hover::before {
+  width: 100%;
+}
+
+/* Destaque: etiqueta no topo e texto embaixo */
+.fact-card:first-child {
+  min-height: 18rem;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.fact-card:first-child .chip {
+  margin-bottom: auto;
+}
+
+/* Etiqueta em formato de pílula */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.fact-card h4 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.3vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.fact-card:first-child h4 {
+  font-size: clamp(2.1rem, 3.6vw, 3rem);
+}
+
+.fact-card p:not(.fact-value) {
+  position: relative;
+  z-index: 1;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.fact-card:first-child p:not(.fact-value) {
+  max-width: 32rem;
+  font-size: 1.08rem;
+}
+
+/* ---------- Curiosidades: numeração gigante vazada ---------- */
+#curiosidades .fact-grid {
+  counter-reset: fact;
+}
+
+#curiosidades .fact-card {
+  counter-increment: fact;
+}
+
+#curiosidades .fact-card::after {
+  content: counter(fact, decimal-leading-zero);
+  position: absolute;
+  right: 1.1rem;
+  bottom: -0.3rem;
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 8vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--accent) 24%, transparent);
+  transition: -webkit-text-stroke-color 0.3s ease;
+  pointer-events: none;
+}
+
+#curiosidades .fact-card:first-child::after {
+  font-size: clamp(8rem, 14vw, 12rem);
+}
+
+#curiosidades .fact-card:hover::after {
+  -webkit-text-stroke-color: var(--accent);
+}
+
+/* ---------- Recordes: número em destaque ---------- */
+.fact-value {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 5.25rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  background: linear-gradient(180deg, #fff 5%, var(--accent) 115%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(
+    0 0 18px color-mix(in srgb, var(--accent) 35%, transparent)
+  );
+  transition: filter 0.3s ease;
+}
+
+.fact-card:first-child .fact-value {
+  font-size: clamp(4.5rem, 9vw, 7.5rem);
+}
+
+.fact-value small {
+  margin-left: 0.4rem;
+  font-size: 0.34em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fact-card:hover .fact-value {
+  filter: drop-shadow(0 0 28px var(--accent));
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1000px) {
+  .fact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fact-card:first-child:nth-last-child(4) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .fact-card:first-child:nth-last-child(4) ~ .fact-card:nth-child(4) {
+    grid-column: 1 / -1;
+  }
+
+  .fact-card:first-child:nth-last-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 700px) {
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legend-item + .legend-item {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .fact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fact-card,
+  .fact-card:first-child {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fact-card,
+  .fact-card::before,
+  .fact-value {
+    transition: none;
+  }
+
+  .fact-card:hover {
+    transform: none;
+  }
+}

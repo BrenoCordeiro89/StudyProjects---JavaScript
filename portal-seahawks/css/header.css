@@ -26,3 +26,17 @@
   object-fit: cover;
   object-position: center;
 }
+
+.brand-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 700px) {
+  .brand-logo {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+  }
+}
