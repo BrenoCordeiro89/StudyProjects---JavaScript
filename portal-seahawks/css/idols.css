@@ -1,0 +1,195 @@
+/* ==========================================================
+   idolos.css — cartões de jogadores (depende de style.css e pages.css)
+   ========================================================== */
+
+.players-section + .players-section {
+  border-top: 1px solid var(--line);
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  gap: 1.25rem;
+}
+
+.players-grid--wide {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* ---------- Cartão ---------- */
+.player-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    rgba(0, 34, 68, 0.5),
+    rgba(8, 20, 38, 0.95)
+  );
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  transition: border-color 0.25s ease;
+}
+
+.player-card:hover {
+  border-color: var(--green);
+}
+
+/* ---------- Foto (ou marcador com o número) ---------- */
+.player-photo {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      80% 60% at 50% 100%,
+      rgba(105, 190, 40, 0.22),
+      transparent 70%
+    ),
+    linear-gradient(180deg, #0a1c35, #07111f);
+}
+
+/* Degradê na base para o texto não brigar com a foto */
+.player-photo::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  height: 35%;
+  background: linear-gradient(180deg, transparent, rgba(5, 11, 20, 0.85));
+  pointer-events: none;
+}
+
+/* Quando a foto for ativada, ela cobre o número */
+.player-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+.player-card:hover .player-photo img {
+  transform: scale(1.05);
+}
+
+.player-number {
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(7rem, 13vw, 10rem);
+  font-weight: 800;
+  line-height: 0.8;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.35);
+  transition:
+    color 0.3s ease,
+    -webkit-text-stroke-color 0.3s ease;
+  user-select: none;
+}
+
+.player-number--text {
+  font-size: clamp(5rem, 9vw, 7rem);
+}
+
+/* Hover: o número acende em verde, como a navegação */
+.player-card:hover .player-number {
+  color: rgba(105, 190, 40, 0.15);
+  -webkit-text-stroke-color: var(--green);
+}
+
+.player-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+}
+
+/* ---------- Texto ---------- */
+.player-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+}
+
+.player-role {
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.player-info h3 {
+  font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+}
+
+.player-info > p:not(.player-role) {
+  margin-bottom: 1rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.player-facts {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.player-facts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.player-facts span {
+  color: var(--grey);
+}
+
+.player-facts strong {
+  color: var(--white);
+  font-weight: 700;
+  text-align: right;
+}
+
+/* ---------- Cartão largo (heróis de hoje) ---------- */
+.player-card--wide {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+}
+
+.player-card--wide .player-photo {
+  aspect-ratio: auto;
+  min-height: 22rem;
+}
+
+.player-card--wide .player-info {
+  justify-content: center;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .players-grid--wide {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .player-card--wide {
+    grid-template-columns: 1fr;
+  }
+
+  .player-card--wide .player-photo {
+    aspect-ratio: 4 / 5;
+    min-height: 0;
+  }
+}
