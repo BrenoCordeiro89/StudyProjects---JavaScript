@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícias | Seattle Seahawks Brasil</title>
+  <meta name="description"
+    content="Notícias do Seattle Seahawks: cobertura de jogos, atualizações do elenco e bastidores da torcida.">
+  <meta name="theme-color" content="#050b14">
+
+  <link rel="preload" as="image" href="assets/img/seahawks-hero-mobile.webp" media="(max-width: 700px)"
+    fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/seahawks-hero-full.webp" media="(min-width: 701px)"
+    fetchpriority="high">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Big+Shoulders+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+  <header class="site-header" id="inicio">
+
+    <div class="header-hero">
+      <a class="header-brand" href="index.html" aria-label="Seattle Seahawks Brasil — página inicial">
+        <picture>
+          <source media="(max-width: 700px)" srcset="assets/img/seahawks-hero-mobile.webp" type="image/webp">
+          <img class="brand-logo" src="assets/img/seahawks-hero-full.webp" alt="" width="1920" height="640"
+            fetchpriority="high" decoding="async">
+        </picture>
+      </a>
+    </div>
+
+    <nav class="main-navigation" aria-label="Navegação principal">
+      <div class="container">
+        <ul class="navigation-list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="historia.html">História</a></li>
+          <li><a href="idolos.html">Ídolos</a></li>
+          <li><a href="curiosities.html">Curiosidades/Recordes</a></li>
+
+          <li><a href="news.html" aria-current="page">Notícias</a></li>
+          <li><a href="comunity.html">Comunidade</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo-principal">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <span class="page-year" aria-hidden="true">NEWS</span>
+
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li aria-current="page">Notícias</li>
+          </ol>
+        </nav>
+
+        <p class="eyebrow">Notícias</p>
+
+        <h1 class="page-title" id="page-title">
+          <span class="title-line">Toda jogada</span>
+          <span class="title-line title-line--outline">merece</span>
+          <span class="title-line title-line--accent">ser contada.</span>
+        </h1>
+
+        <p class="page-lead">
+          Cobertura de jogos, atualizações do elenco e bastidores da torcida.
+          Este espaço é um modelo e será alimentado por uma fonte de notícias em breve.
+        </p>
+      </div>
+
+      <div class="page-hero-line" aria-hidden="true"></div>
+    </section>
+
+    <!-- FEED STATUS (futuro: preenchido pela API) -->
+    <section class="feed-strip" aria-label="Status do feed de notícias">
+      <div class="container feed-grid">
+        <p class="feed-item">
+          <span class="feed-label">Status</span>
+          <strong class="feed-value" data-feed="status">
+            <span class="feed-dot" aria-hidden="true"></span>Em preparação
+          </strong>
+        </p>
+        <p class="feed-item">
+          <span class="feed-label">Última atualização</span>
+          <strong class="feed-value"><time data-feed="updated" datetime="">—</time></strong>
+        </p>
+        <p class="feed-item">
+          <span class="feed-label">Fonte</span>
+          <strong class="feed-value" data-feed="source">A definir</strong>
+        </p>
+        <p class="feed-item">
+          <span class="feed-label">Matérias</span>
+          <strong class="feed-value" data-feed="count">7</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- FEATURED STORY -->
+    <section class="news-featured section-padding" aria-labelledby="featured-title">
+      <div class="container">
+
+        <article class="featured-story" data-id="sample-featured" data-category="game" data-sample="true">
+          <div class="news-media">
+            <!-- <img src="assets/img/news/featured.webp" alt="Descrição da imagem" width="900" height="600" loading="lazy" decoding="async"> -->
+          </div>
+
+          <div class="featured-body">
+            <div class="news-tags">
+              <span class="tag tag--solid">Destaque</span>
+              <span class="tag">Jogos</span>
+            </div>
+
+            <h2 id="featured-title"><a href="#">Prévia do próximo jogo: o que esperar do confronto</a></h2>
+
+            <p>
+              Tudo o que importa antes do apito inicial: escalações, pontos de atenção
+              e o histórico entre as duas equipes, reunido em um só lugar.
+            </p>
+
+            <p class="news-meta">
+              <time datetime="">Em breve</time>
+              <span>Fonte: a definir</span>
+              <span>5 min de leitura</span>
+            </p>
+
+            <span class="read-link" aria-hidden="true">Ler matéria <span class="read-arrow">→</span></span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- LATEST NEWS -->
+    <section class="news-latest section-padding" id="latest" aria-labelledby="latest-title">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Últimas notícias</p>
+            <h2 id="latest-title">Direto do <span>campo.</span></h2>
+          </div>
+          <p class="section-description">
+            Jogos, elenco, torcida e franquia. Escolha o assunto que mais interessa.
+          </p>
+        </div>
+
+        <!-- Filtro só com CSS. Cada "value" = data-category dos cartões. -->
+        <fieldset class="news-filters">
+          <legend class="visually-hidden">Filtrar notícias por categoria</legend>
+
+          <input type="radio" name="news-filter" id="filter-all" value="all" checked>
+          <label for="filter-all">Todas</label>
+
+          <input type="radio" name="news-filter" id="filter-game" value="game">
+          <label for="filter-game">Jogos</label>
+
+          <input type="radio" name="news-filter" id="filter-roster" value="roster">
+          <label for="filter-roster">Elenco</label>
+
+          <input type="radio" name="news-filter" id="filter-fans" value="fans">
+          <label for="filter-fans">Torcida</label>
+
+          <input type="radio" name="news-filter" id="filter-franchise" value="franchise">
+          <label for="filter-franchise">Franquia</label>
+        </fieldset>
+
+        <!--
+          CONTRATO DE DADOS (para a API no futuro):
+          { id, title, excerpt, category, date, readingTime, source, url, image }
+          category: game | roster | fans | franchise
+          Remova data-sample="true" nos cartões reais.
+        -->
+        <div class="news-grid" id="news-list" aria-live="polite">
+
+          <article class="news-card" data-id="sample-1" data-category="game" data-sample="true">
+            <div class="news-media">
+              <!-- <img src="assets/img/news/sample-1.webp" alt="" width="800" height="500" loading="lazy" decoding="async"> -->
+            </div>
+            <div class="news-body">
+              <div class="news-tags"><span class="tag">Jogos</span></div>
+              <h3><a href="#">Cobertura da próxima partida</a></h3>
+              <p>Escalações, pontos de atenção e o que esperar do confronto da semana.</p>
+              <p class="news-meta"><time datetime="">Em breve</time><span>3 min</span></p>
+            </div>
+          </article>
+
+          <article class="news-card" data-id="sample-2" data-category="roster" data-sample="true">
+            <div class="news-media">
+              <!-- <img src="assets/img/news/sample-2.webp" alt="" width="800" height="500" loading="lazy" decoding="async"> -->
+            </div>
+            <div class="news-body">
+              <div class="news-tags"><span class="tag">Elenco</span></div>
+              <h3><a href="#">Atualização do elenco</a></h3>
+              <p>Quem está em alta, quem volta de lesão e quem pode surpreender.</p>
+              <p class="news-meta"><time datetime="">Em breve</time><span>4 min</span></p>
+            </div>
+          </article>
+
+          <article class="news-card" data-id="sample-3" data-category="fans" data-sample="true">
+            <div class="news-media">
+              <!-- <img src="assets/img/news/sample-3.webp" alt="" width="800" height="500" loading="lazy" decoding="async"> -->
+            </div>
+            <div class="news-body">
+              <div class="news-tags"><span class="tag">Torcida</span></div>
+              <h3><a href="#">Bastidores da 12</a></h3>
+              <p>Histórias de quem faz o estádio tremer, dentro e fora de Seattle.</p>
+              <p class="news-meta"><time datetime="">Em breve</time><span>3 min</span></p>
+            </div>
+          </article>
+
+          <article class="news-card" data-id="sample-4" data-category="franchise" data-sample="true">
+            <div class="news-media">
+              <!-- <img src="assets/img/news/sample-4.webp" alt="" width="800" height="500" loading="lazy" decoding="async"> -->
+            </div>
+            <div class="news-body">
+              <div class="news-tags"><span class="tag">Franquia</span></div>
+              <h3><a href="#">Novidades da franquia</a></h3>
+              <p>Comunicados, mudanças na comissão técnica e decisões de bastidores.</p>
+              <p class="news-meta"><time datetime="">Em breve</time><span>2 min</span></p>
+            </div>
+          </article>
+
+          <article class="news-card" data-id="sample-5" data-category="game" data-sample="true">
+            <div class="news-media">
+              <!-- <img src="assets/img/news/sample-5.webp" alt="" width="800" height="500" loading="lazy" decoding="async"> -->
+            </div>
+            <div class="news-body">
+              <div class="news-tags"><span class="tag">Jogos</span></div>
+              <h3><a href="#">Resumo da rodada</a></h3>
+              <p>Os principais momentos do último jogo e o que eles dizem sobre a temporada.</p>
+              <p class="news-meta"><time datetime="">Em breve</time><span>4 min</span></p>
+            </div>
+          </article>
+
+          <article class="news-card" data-id="sample-6" data-category="roster" data-sample="true">
+            <div class="news-media">
+              <!-- <img src="assets/img/news/sample-6.webp" alt="" width="800" height="500" loading="lazy" decoding="async"> -->
+            </div>
+            <div class="news-body">
+              <div class="news-tags"><span class="tag">Elenco</span></div>
+              <h3><a href="#">Relatório de lesões</a></h3>
+              <p>A situação física dos jogadores antes da próxima partida.</p>
+              <p class="news-meta"><time datetime="">Em breve</time><span>2 min</span></p>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="news-state" id="news-empty" hidden>Nenhuma matéria nesta categoria por enquanto.</p>
+
+        <!-- Modelo para o JS clonar, uma cópia por matéria da API -->
+        <template id="news-card-template">
+          <article class="news-card" data-id="" data-category="">
+            <div class="news-media">
+              <img src="" alt="" width="800" height="500" loading="lazy" decoding="async">
+            </div>
+            <div class="news-body">
+              <div class="news-tags"><span class="tag"></span></div>
+              <h3><a href="#"></a></h3>
+              <p></p>
+              <p class="news-meta"><time datetime=""></time><span></span></p>
+            </div>
+          </article>
+        </template>
+
+      </div>
+    </section>
+
+    <!-- NEWSLETTER CTA -->
+    <section class="news-cta" aria-labelledby="cta-title">
+      <div class="container news-cta-inner">
+        <div>
+          <p class="eyebrow">Fique por dentro</p>
+          <h2 id="cta-title">A próxima jogada <span>começa aqui.</span></h2>
+        </div>
+        <a class="button button-primary" href="index.html#newsletter">
+          Ver newsletter <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CHAPTERS -->
+    <nav class="chapter-nav" aria-label="Navegação entre capítulos">
+      <a class="next-link" href="curiosidades.html">
+        <span class="eyebrow">Capítulo anterior</span>
+        <span class="next-title"><span aria-hidden="true">←</span> Curiosidades</span>
+      </a>
+
+      <a class="next-link" href="index.html#comunidade">
+        <span class="eyebrow">Próximo capítulo</span>
+        <span class="next-title">Comunidade <span aria-hidden="true">→</span></span>
+      </a>
+    </nav>
+
+    <div class="home-return-wrap">
+      <a class="home-return" href="index.html">
+        <span aria-hidden="true">←</span> Voltar à página inicial
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+
+      <div class="footer-about">
+        <a class="footer-brand" href="index.html">
+          <span class="footer-brand-number" aria-hidden="true">12</span>
+          Seahawks Brasil
+        </a>
+        <p class="footer-tagline">
+          Um portal feito por torcedor, para torcedores. Sem
+          patrocínio, sem anúncios e sem ligação com a franquia.
+        </p>
+      </div>
+
+      <nav class="footer-column" aria-label="Explorar">
+        <h3 class="footer-title">Explorar</h3>
+        <ul class="footer-links">
+          <li><a href="historia.html">História</a></li>
+          <li><a href="idolos.html">Ídolos</a></li>
+          <li><a href="curiosidades.html">Curiosidades</a></li>
+          <li><a href="curiosidades.html#recordes">Recordes</a></li>
+          <li><a href="news.html">Notícias</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-column" aria-label="Comunidade">
+        <h3 class="footer-title">Comunidade</h3>
+        <ul class="footer-links">
+          <li><a href="index.html#loja">Loja do torcedor</a></li>
+          <li><a href="index.html#redes">Redes sociais</a></li>
+          <li><a href="index.html#newsletter">Newsletter</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-column">
+        <h3 class="footer-title">Sobre o projeto</h3>
+        <ul class="footer-badges">
+          <li>Projeto autoral</li>
+          <li>Sem fins lucrativos</li>
+          <li>Não oficial</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="container footer-legal-bar">
+      <p class="footer-legal">
+        Projeto autoral e sem fins lucrativos, criado por um torcedor para
+        estudo e diversão. Não é oficial e não possui vínculo, patrocínio ou
+        aprovação do Seattle Seahawks ou da NFL. Nomes e marcas citados
+        pertencem aos seus respectivos proprietários.
+      </p>
+      <a class="back-to-top" href="#inicio">Voltar ao topo ↑</a>
+    </div>
+
+    <p class="footer-wordmark" aria-hidden="true">Somos 12</p>
+  </footer>
+</body>
+
+</html>

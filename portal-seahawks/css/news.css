@@ -1,0 +1,536 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Faixa de status do feed ---------- */
+.feed-strip {
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(
+    180deg,
+    rgba(8, 20, 38, 0.8),
+    rgba(5, 11, 20, 0.9)
+  );
+}
+
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.feed-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.5rem;
+}
+
+.feed-item + .feed-item {
+  border-left: 1px solid var(--line);
+}
+
+.feed-label {
+  color: var(--grey);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.feed-value {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.feed-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--grey);
+}
+
+/* Quando o feed estiver no ar: <span class="feed-dot feed-dot--live"> */
+.feed-dot--live {
+  background: var(--green);
+  animation: feed-pulse 2s ease-out infinite;
+}
+
+@keyframes feed-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(105, 190, 40, 0.6);
+  }
+
+  70%,
+  100% {
+    box-shadow: 0 0 0 0.6rem rgba(105, 190, 40, 0);
+  }
+}
+
+/* ---------- Imagem (ou marcador) ---------- */
+.news-media {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      80% 60% at 50% 100%,
+      rgba(105, 190, 40, 0.22),
+      transparent 70%
+    ),
+    linear-gradient(180deg, #0a1c35, #07111f);
+}
+
+.news-media::before {
+  content: "12";
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 10vw, 8rem);
+  font-weight: 800;
+  line-height: 0.8;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+  transition: -webkit-text-stroke-color 0.3s ease;
+}
+
+[data-category="game"] .news-media::before {
+  content: "VS";
+}
+
+[data-category="roster"] .news-media::before {
+  content: "#";
+}
+
+[data-category="fans"] .news-media::before {
+  content: "12";
+}
+
+[data-category="franchise"] .news-media::before {
+  content: "SEA";
+}
+
+/* Degradê na base da imagem */
+.news-media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  height: 35%;
+  background: linear-gradient(180deg, transparent, rgba(5, 11, 20, 0.8));
+  pointer-events: none;
+}
+
+/* Quando a imagem for ativada, ela cobre o marcador */
+.news-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* ---------- Etiquetas e metadados ---------- */
+.news-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* O selo "Modelo" some sozinho quando o cartão deixa de ter data-sample */
+[data-sample="true"] .news-tags::after {
+  content: "Modelo";
+  padding: 0.35rem 0.75rem;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  color: var(--grey);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.news-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  color: var(--grey);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.news-meta > * + *::before {
+  content: "·";
+  margin-right: 1rem;
+}
+
+.read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--green);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.read-arrow {
+  transition: transform 0.25s ease;
+}
+
+/* ---------- Matéria em destaque ---------- */
+.featured-story {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background:
+    radial-gradient(
+      70% 90% at 0% 0%,
+      rgba(105, 190, 40, 0.14),
+      transparent 70%
+    ),
+    linear-gradient(160deg, rgba(0, 34, 68, 0.6), rgba(5, 11, 20, 0.97));
+  transition: border-color 0.3s ease;
+}
+
+.featured-story:hover {
+  border-color: var(--green);
+}
+
+.featured-story .news-media {
+  order: 2;
+  aspect-ratio: auto;
+  min-height: 22rem;
+}
+
+.featured-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: clamp(1.75rem, 4vw, 3.5rem);
+}
+
+.featured-body h2 {
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+  line-height: 0.95;
+}
+
+.featured-body > p:not(.news-meta) {
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Link esticado: o cartão inteiro é clicável */
+.featured-body h2 a::after,
+.news-body h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.featured-story:hover h2 a,
+.news-card:hover h3 a {
+  color: var(--green);
+}
+
+.featured-story:hover .read-arrow,
+.news-card:hover .read-arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- Últimas notícias ---------- */
+.news-latest {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--bg), var(--bg-soft));
+}
+
+.news-latest .section-heading {
+  position: relative;
+}
+
+.news-latest .section-heading > * {
+  position: relative;
+  z-index: 1;
+}
+
+.news-latest .section-heading::before {
+  content: "News";
+  position: absolute;
+  top: 50%;
+  left: -0.04em;
+  transform: translateY(-55%);
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+/* ---------- Filtros (só CSS) ---------- */
+.news-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  border: 0;
+}
+
+.news-filters input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.news-filters label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--grey);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.news-filters label:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.news-filters input:checked + label {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--bg);
+}
+
+.news-filters input:focus-visible + label {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+.news-latest:has(#filter-game:checked) .news-card:not([data-category="game"]),
+.news-latest:has(#filter-roster:checked)
+  .news-card:not([data-category="roster"]),
+.news-latest:has(#filter-fans:checked) .news-card:not([data-category="fans"]),
+.news-latest:has(#filter-franchise:checked)
+  .news-card:not([data-category="franchise"]) {
+  display: none;
+}
+
+/* ---------- Grade e cartões ---------- */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.news-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: linear-gradient(
+    160deg,
+    rgba(0, 34, 68, 0.5),
+    rgba(5, 11, 20, 0.96)
+  );
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Linha verde que se estende no hover, igual à de Curiosidades */
+.news-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  z-index: 2;
+  width: 3.5rem;
+  height: 3px;
+  background: var(--green);
+  transition: width 0.45s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--green);
+}
+
+.news-card:hover::before {
+  width: 100%;
+}
+
+.news-card:hover .news-media img {
+  transform: scale(1.05);
+}
+
+.news-card:hover .news-media::before {
+  -webkit-text-stroke-color: var(--green);
+}
+
+.news-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.5rem;
+}
+
+.news-body h3 {
+  font-size: clamp(1.5rem, 2.2vw, 1.8rem);
+  line-height: 1.05;
+}
+
+.news-body > p:not(.news-meta) {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.news-body .news-meta {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Estados (para o JS usar depois) ---------- */
+.news-state {
+  padding: 3rem 1rem;
+  color: var(--grey);
+  text-align: center;
+}
+
+.news-card--skeleton .news-media,
+.skeleton-line {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.04)
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s linear infinite;
+}
+
+.skeleton-line {
+  height: 0.9rem;
+  border-radius: 0.25rem;
+}
+
+@keyframes skeleton-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ---------- Faixa de newsletter ---------- */
+.news-cta {
+  border-top: 1px solid var(--line);
+  background: radial-gradient(
+    60% 120% at 0% 50%,
+    rgba(105, 190, 40, 0.1),
+    transparent 70%
+  );
+}
+
+.news-cta-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.news-cta h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1000px) {
+  .news-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .featured-story {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-story .news-media {
+    order: 0;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 700px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feed-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .feed-item:nth-child(3) {
+    border-left: 0;
+  }
+
+  .feed-item:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-card,
+  .news-card::before,
+  .news-media img,
+  .read-arrow {
+    transition: none;
+  }
+
+  .news-card:hover {
+    transform: none;
+  }
+
+  .feed-dot--live,
+  .news-card--skeleton .news-media,
+  .skeleton-line {
+    animation: none;
+  }
+}
