@@ -1,0 +1,2390 @@
+/* ============================================================
+   FAITHFUL BRASIL
+   HISTÓRIA DA FRANQUIA — SAN FRANCISCO 49ERS
+
+   Estrutura:
+   01. Base, variáveis e tipografia
+   02. Contêineres e elementos compartilhados
+   03. Cabeçalho
+   04. Hero e imagem de fundo
+   05. Introdução histórica
+   06. Linha do tempo
+   07. Encerramento
+   08. Navegação entre páginas
+   09. Footer
+   10. Tablets
+   11. Celulares
+   12. Acessibilidade
+
+   Este arquivo utiliza as classes do HTML atual.
+============================================================ */
+
+/* ============================================================
+   01. BASE, VARIÁVEIS E TIPOGRAFIA
+============================================================ */
+
+.history-page {
+  --history-bg: #090909;
+  --history-bg-soft: #0e0e11;
+  --history-panel: #131316;
+  --history-panel-hover: #19191d;
+
+  --history-red: #aa0000;
+  --history-red-light: #d71920;
+
+  --history-gold: #c9a66b;
+  --history-gold-light: #e8d2a0;
+
+  --history-text: #f4f2ee;
+  --history-muted: #b9b8b6;
+  --history-line: rgba(255, 255, 255, 0.12);
+
+  --history-width: 1160px;
+  --history-gutter: clamp(20px, 4.2vw, 48px);
+
+  margin: 0;
+  min-width: 320px;
+  overflow-x: clip;
+
+  color: var(--history-text);
+  background: var(--history-bg);
+
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.history-page *,
+.history-page *::before,
+.history-page *::after {
+  box-sizing: border-box;
+}
+
+.history-page img {
+  display: block;
+  max-width: 100%;
+}
+
+.history-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.history-page button {
+  font: inherit;
+}
+
+.history-page h1,
+.history-page h2,
+.history-page h3,
+.history-page p {
+  margin-top: 0;
+}
+
+.history-page h1,
+.history-page h2,
+.history-page h3 {
+  color: var(--history-text);
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  line-height: 1.08;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.history-page p {
+  color: var(--history-muted);
+  font-size: 0.94rem;
+  line-height: 1.85;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+.history-page p:last-child {
+  margin-bottom: 0;
+}
+
+.history-page h1 span,
+.history-page h2 span {
+  color: var(--history-gold);
+}
+
+.history-page a:focus-visible {
+  outline: 2px solid var(--history-gold-light);
+  outline-offset: 5px;
+}
+
+.history-page ::selection {
+  color: #111;
+  background: var(--history-gold-light);
+}
+
+.history-page .skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+
+  padding: 12px 18px;
+  transform: translateY(-160%);
+
+  border-radius: 3px;
+  color: #111;
+  background: var(--history-gold-light);
+
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  transition: transform 180ms ease;
+}
+
+.history-page .skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   02. CONTÊINERES E ELEMENTOS COMPARTILHADOS
+============================================================ */
+
+.history-page .section-container {
+  width: min(var(--history-width), calc(100% - var(--history-gutter) * 2));
+
+  margin-inline: auto;
+}
+
+.history-page .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  margin-bottom: 22px;
+
+  color: var(--history-gold-light);
+
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  line-height: 1.65;
+  text-transform: uppercase;
+}
+
+.history-page .eyebrow::before {
+  content: "";
+
+  flex: 0 0 25px;
+  width: 25px;
+  height: 2px;
+
+  background: var(--history-red-light);
+}
+
+/* ============================================================
+   03. CABEÇALHO
+============================================================ */
+
+.history-page .site-header {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  background: var(--history-bg);
+}
+
+.history-page .history-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.history-page .header-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+
+  width: 100%;
+  min-height: 88px;
+
+  padding-inline: max(
+    var(--history-gutter),
+    calc((100% - var(--history-width)) / 2)
+  );
+
+  border-bottom: 1px solid var(--history-line);
+  background: #090909;
+}
+
+/* Marca */
+
+.history-page .brand {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.history-page .brand-mark {
+  flex: 0 0 44px;
+
+  width: 44px;
+  height: 44px;
+
+  object-fit: contain;
+}
+
+.history-page .brand-name {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+
+  color: var(--history-text);
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: 0.045em;
+  line-height: 0.98;
+}
+
+.history-page .brand-name-accent {
+  color: var(--history-gold);
+}
+
+/* Assinatura central do cabeçalho */
+
+.history-page .header-tagline {
+  margin: 0;
+
+  color: #e2ded6;
+
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.history-page .header-tagline span {
+  display: block;
+  margin-top: 3px;
+
+  color: #9f9a94;
+
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+}
+
+/* Link de retorno à página inicial */
+
+.history-page .header-home-link {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 40px;
+  padding: 9px 13px;
+
+  border: 1px solid rgba(201, 166, 107, 0.42);
+  border-radius: 2px;
+
+  color: #dfd2b9;
+  background: rgba(201, 166, 107, 0.035);
+
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.history-page .header-home-link:hover {
+  border-color: var(--history-gold);
+  color: #fff;
+  background: rgba(201, 166, 107, 0.1);
+}
+
+.history-page .header-home-link > span:first-child {
+  color: var(--history-gold);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ============================================================
+   04. HERO E IMAGEM DE FUNDO
+============================================================ */
+
+.history-page .history-hero {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  align-items: center;
+
+  min-height: clamp(500px, 53vw, 680px);
+
+  padding-block: clamp(74px, 8vw, 112px) 104px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 72% 45%,
+      rgba(125, 15, 20, 0.2),
+      transparent 48%
+    ),
+    #0b0b0e;
+}
+
+/* A imagem ocupa toda a área do hero. */
+
+.history-page .history-hero-media {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.history-page .history-hero-media source {
+  display: none;
+}
+
+.history-page .history-hero-media img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center 43%;
+}
+
+/* Camadas de contraste aplicadas sobre a imagem. */
+
+.history-page .history-hero-overlay {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 7, 9, 0.97) 0%,
+      rgba(7, 7, 9, 0.88) 30%,
+      rgba(7, 7, 9, 0.62) 55%,
+      rgba(7, 7, 9, 0.22) 82%,
+      rgba(7, 7, 9, 0.4) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(7, 7, 9, 0.92) 0%,
+      rgba(7, 7, 9, 0.12) 35%,
+      rgba(7, 7, 9, 0.24) 100%
+    );
+
+  pointer-events: none;
+}
+
+/* Conteúdo textual do hero. */
+
+.history-page .history-hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(var(--history-width), calc(100% - var(--history-gutter) * 2));
+
+  margin-inline: auto;
+  padding-right: clamp(0px, 8vw, 105px);
+}
+
+.history-page .history-hero-content .eyebrow {
+  margin-bottom: 24px;
+}
+
+.history-page .history-hero-content h1 {
+  max-width: 920px;
+
+  margin-bottom: 25px;
+
+  color: #fff;
+
+  font-family: "Big Shoulders Display", "Barlow Condensed", sans-serif;
+  font-size: clamp(3.5rem, 7.2vw, 6.8rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 0.91;
+  text-transform: uppercase;
+}
+
+.history-page .history-hero-content h1 span {
+  display: block;
+
+  margin-top: 0.13em;
+
+  color: var(--history-gold-light);
+}
+
+.history-page .history-hero-description {
+  max-width: 610px;
+
+  margin-bottom: 30px;
+
+  color: #d0ccca;
+
+  font-size: clamp(0.9rem, 1.15vw, 1rem);
+  line-height: 1.9;
+}
+
+/* CTA */
+
+.history-page .history-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  min-width: 234px;
+  min-height: 49px;
+
+  padding: 13px 17px;
+
+  border: 1px solid var(--history-gold);
+  border-radius: 2px;
+
+  color: #17120b;
+  background: var(--history-gold);
+
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.history-page .history-hero-cta:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--history-gold-light);
+  background: var(--history-gold-light);
+}
+
+.history-page .cta-arrow {
+  color: #17120b;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* Selo comemorativo */
+
+.history-page .history-hero-stamp {
+  position: absolute;
+  z-index: 2;
+
+  right: max(var(--history-gutter), calc((100% - var(--history-width)) / 2));
+  bottom: 64px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  width: 124px;
+  height: 124px;
+
+  border: 1px solid rgba(232, 210, 160, 0.65);
+  border-radius: 50%;
+
+  color: var(--history-gold-light);
+  background: rgba(8, 8, 10, 0.68);
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.025);
+
+  text-align: center;
+}
+
+.history-page .history-hero-stamp span {
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+}
+
+.history-page .history-hero-stamp strong {
+  color: #fff;
+
+  font-family: "Big Shoulders Display", sans-serif;
+  font-size: 2.7rem;
+  font-weight: 900;
+  line-height: 0.95;
+}
+
+/* ============================================================
+   05. INTRODUÇÃO HISTÓRICA
+============================================================ */
+
+.history-page .history-intro {
+  padding-top: clamp(66px, 7.5vw, 96px);
+  padding-bottom: clamp(74px, 8vw, 106px);
+}
+
+/* Etiqueta numerada da seção */
+
+.history-page .history-intro-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 39px;
+  padding-bottom: 17px;
+
+  border-bottom: 1px solid var(--history-line);
+
+  color: #b9b3a8;
+
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.6;
+}
+
+.history-page .section-index {
+  display: grid;
+  flex: 0 0 34px;
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid rgba(201, 166, 107, 0.45);
+
+  color: var(--history-gold-light);
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+/* Grade principal da introdução */
+
+.history-page .history-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(40px, 7.5vw, 105px);
+}
+
+.history-page .history-intro-grid > div {
+  min-width: 0;
+}
+
+.history-page .history-intro-grid .eyebrow {
+  margin-bottom: 18px;
+}
+
+.history-page .history-intro-grid h2 {
+  max-width: 480px;
+
+  margin-bottom: 0;
+
+  font-size: clamp(2.75rem, 5.2vw, 4.45rem);
+  letter-spacing: -0.025em;
+  line-height: 0.99;
+  text-transform: uppercase;
+}
+
+.history-page .history-intro-grid h2 span {
+  display: block;
+  margin-top: 0.12em;
+}
+
+.history-page .history-intro-copy {
+  max-width: 650px;
+  min-width: 0;
+  padding-top: 4px;
+}
+
+.history-page .history-intro-copy p {
+  margin-bottom: 18px;
+
+  font-size: 0.93rem;
+  line-height: 1.9;
+}
+
+.history-page .history-intro-copy p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   06. LINHA DO TEMPO
+============================================================ */
+
+.history-page .history-timeline-section {
+  position: relative;
+
+  padding-block: clamp(76px, 9vw, 112px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    radial-gradient(ellipse at 4% 18%, rgba(170, 0, 0, 0.09), transparent 34%),
+    linear-gradient(180deg, #0d0d10 0%, #101013 52%, #0b0b0e 100%);
+}
+
+/* Cabeçalho da linha do tempo */
+
+.history-page .history-timeline-section .section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+  align-items: end;
+  gap: 42px;
+
+  margin-bottom: clamp(46px, 6vw, 68px);
+}
+
+.history-page .section-heading > div {
+  min-width: 0;
+}
+
+.history-page .section-heading .eyebrow {
+  margin-bottom: 19px;
+}
+
+.history-page .section-heading h2 {
+  max-width: 700px;
+
+  margin-bottom: 0;
+
+  font-size: clamp(2.85rem, 5.4vw, 4.55rem);
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.history-page .section-heading h2 span {
+  display: block;
+  margin-top: 0.1em;
+}
+
+.history-page .section-heading-description {
+  max-width: 360px;
+
+  justify-self: end;
+  margin-bottom: 5px;
+
+  font-size: 0.89rem;
+  line-height: 1.85;
+}
+
+/* Estrutura geral */
+
+.history-page .timeline {
+  position: relative;
+
+  display: grid;
+  gap: 27px;
+
+  width: min(1040px, 100%);
+  margin-inline: auto;
+}
+
+/* Eixo vertical dos marcadores */
+
+.history-page .timeline::before {
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 31px;
+
+  width: 1px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(201, 166, 107, 0.06),
+    rgba(201, 166, 107, 0.55) 12%,
+    rgba(201, 166, 107, 0.32) 88%,
+    rgba(201, 166, 107, 0.06)
+  );
+
+  content: "";
+}
+
+/* Cada item ocupa três colunas:
+   marcador | período histórico | conteúdo */
+
+.history-page .timeline-item {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 64px 175px minmax(0, 1fr);
+  grid-template-areas: "marker year card";
+  align-items: start;
+  column-gap: 22px;
+
+  min-width: 0;
+}
+
+/* Marcador */
+
+.history-page .timeline-marker {
+  grid-area: marker;
+
+  display: flex;
+  justify-content: center;
+
+  min-width: 0;
+  padding-top: 30px;
+}
+
+.history-page .timeline-marker span {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+  flex: 0 0 15px;
+
+  width: 15px;
+  height: 15px;
+
+  border: 3px solid #101013;
+  border-radius: 50%;
+
+  background: var(--history-gold);
+  box-shadow: 0 0 0 1px rgba(201, 166, 107, 0.6);
+}
+
+/* Ano e identificação do período */
+
+.history-page .timeline-year {
+  grid-area: year;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+
+  min-width: 0;
+  padding-top: 23px;
+}
+
+.history-page .timeline-year span {
+  color: #b6a88b;
+
+  font-size: 0.59rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.history-page .timeline-year strong {
+  color: var(--history-gold-light);
+
+  font-family: "Big Shoulders Display", "Barlow Condensed", sans-serif;
+  font-size: clamp(2.25rem, 3vw, 3.1rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Cartões históricos */
+
+.history-page .timeline-card {
+  grid-area: card;
+
+  min-width: 0;
+  padding: clamp(23px, 3vw, 33px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid rgba(170, 0, 0, 0.9);
+  border-radius: 3px;
+
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.035), transparent 55%),
+    var(--history-panel);
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.history-page .timeline-card:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(201, 166, 107, 0.33);
+  border-left-color: var(--history-gold);
+
+  background-color: var(--history-panel-hover);
+}
+
+/* Categoria e contador do capítulo */
+
+.history-page .timeline-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 9px 18px;
+
+  margin-bottom: 18px;
+}
+
+.history-page .timeline-category {
+  color: var(--history-gold-light);
+
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1.6;
+}
+
+.history-page .timeline-number {
+  color: #858187;
+
+  font-size: 0.61rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Título e texto de cada capítulo */
+
+.history-page .timeline-card h3 {
+  margin-bottom: 17px;
+
+  font-size: clamp(1.72rem, 2.5vw, 2.25rem);
+  letter-spacing: -0.012em;
+  line-height: 1.05;
+}
+
+.history-page .timeline-card > p {
+  max-width: 68ch;
+
+  margin-bottom: 15px;
+
+  color: #c2c0c0;
+
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+.history-page .timeline-card > p:last-of-type {
+  margin-bottom: 0;
+}
+
+.history-page .timeline-card em {
+  color: #eee0c1;
+}
+
+/* Destaques dentro dos capítulos */
+
+.history-page .timeline-highlight {
+  display: grid;
+  grid-template-columns: 25px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+
+  margin-top: 25px;
+  padding: 17px 18px;
+
+  border: 1px solid rgba(201, 166, 107, 0.18);
+  border-left: 2px solid var(--history-gold);
+
+  background: rgba(201, 166, 107, 0.045);
+}
+
+.history-page .highlight-icon {
+  display: grid;
+  place-items: center;
+
+  width: 23px;
+  height: 23px;
+
+  color: var(--history-gold);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.history-page .timeline-highlight p {
+  margin: 0;
+
+  color: #bdb9b4;
+
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+
+.history-page .timeline-highlight strong {
+  display: block;
+  margin-bottom: 4px;
+
+  color: #eee4d0;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+/* Capítulo em evidência */
+
+.history-page .timeline-item-featured .timeline-card {
+  border-color: rgba(201, 166, 107, 0.26);
+  border-left-color: var(--history-gold);
+
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(170, 0, 0, 0.15), transparent 52%),
+    var(--history-panel);
+}
+
+.history-page .timeline-item-featured .timeline-marker span {
+  background: var(--history-red-light);
+  box-shadow:
+    0 0 0 1px rgba(215, 25, 32, 0.7),
+    0 0 15px rgba(215, 25, 32, 0.22);
+}
+
+.history-page .timeline-item-featured .timeline-year strong {
+  color: #f1d59c;
+}
+
+/* ============================================================
+   07. ENCERRAMENTO
+============================================================ */
+
+.history-page .history-closing {
+  position: relative;
+
+  margin-top: clamp(54px, 7vw, 84px);
+  margin-bottom: clamp(54px, 7vw, 84px);
+
+  padding: clamp(47px, 6.5vw, 78px) clamp(24px, 7vw, 90px);
+
+  border: 1px solid rgba(201, 166, 107, 0.23);
+  border-top: 2px solid var(--history-red);
+
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(170, 0, 0, 0.17), transparent 58%),
+    linear-gradient(145deg, #131114, #0d0d10 72%);
+
+  text-align: center;
+}
+
+.history-page .history-closing .eyebrow {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.history-page .history-closing h2 {
+  max-width: 850px;
+
+  margin: 0 auto 22px;
+
+  font-size: clamp(2.65rem, 5.5vw, 4.65rem);
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.history-page .history-closing h2 span {
+  display: block;
+  margin-top: 0.1em;
+}
+
+.history-page .history-closing > p:not(.eyebrow) {
+  max-width: 690px;
+
+  margin: 0 auto;
+
+  font-size: 0.91rem;
+  line-height: 1.9;
+}
+
+.history-page .closing-signature {
+  display: inline-block;
+
+  margin-top: 29px;
+  padding-top: 14px;
+
+  border-top: 1px solid rgba(201, 166, 107, 0.45);
+
+  color: var(--history-gold-light);
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.19em;
+}
+
+/* ============================================================
+   08. NAVEGAÇÃO ENTRE PÁGINAS
+============================================================ */
+
+.history-page .page-navigation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+
+  margin-top: 0;
+  margin-bottom: 62px;
+}
+
+.history-page .page-nav-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  min-width: 0;
+  min-height: 112px;
+  padding: 23px;
+
+  border: 1px solid var(--history-line);
+  border-radius: 3px;
+
+  background:
+    linear-gradient(130deg, rgba(255, 255, 255, 0.025), transparent 65%),
+    var(--history-panel);
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.history-page .page-nav-card:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(201, 166, 107, 0.5);
+  background-color: var(--history-panel-hover);
+}
+
+.history-page .page-nav-home {
+  justify-content: flex-start;
+}
+
+.history-page .page-nav-next {
+  justify-content: space-between;
+  text-align: right;
+}
+
+.history-page .page-nav-icon {
+  display: grid;
+  flex: 0 0 42px;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(201, 166, 107, 0.35);
+  border-radius: 50%;
+
+  color: var(--history-gold-light);
+
+  font-size: 1.15rem;
+  line-height: 1;
+
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.history-page .page-nav-card:hover .page-nav-icon {
+  border-color: var(--history-gold);
+  color: #fff;
+}
+
+.history-page .page-nav-home:hover .page-nav-icon {
+  transform: translateX(-3px);
+}
+
+.history-page .page-nav-next:hover .page-nav-icon {
+  transform: translateX(3px);
+}
+
+.history-page .page-nav-copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.history-page .page-nav-next .page-nav-copy {
+  align-items: flex-end;
+}
+
+.history-page .page-nav-overline {
+  color: var(--history-gold);
+
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+}
+
+.history-page .page-nav-copy strong {
+  color: var(--history-text);
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.history-page .page-nav-description {
+  color: #a9a6a7;
+
+  font-size: 0.73rem;
+  line-height: 1.65;
+}
+
+/* ============================================================
+   09. FOOTER
+============================================================ */
+
+.history-page .site-footer {
+  width: 100%;
+
+  border-top: 1px solid var(--history-line);
+
+  background: #070708;
+}
+
+.history-page .history-footer {
+  color: var(--history-text);
+}
+
+.history-page .footer-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 30px;
+
+  padding-top: 33px;
+  padding-bottom: 33px;
+}
+
+/* Marca no rodapé */
+
+.history-page .footer-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.history-page .footer-brand img {
+  flex: 0 0 43px;
+
+  width: 43px;
+  height: 43px;
+
+  object-fit: contain;
+}
+
+.history-page .footer-brand > span {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.history-page .footer-brand strong {
+  color: #eeeae3;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.history-page .footer-brand small {
+  color: #99938b;
+
+  font-size: 0.53rem;
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  line-height: 1.5;
+}
+
+/* Frase editorial */
+
+.history-page .footer-quote {
+  justify-self: center;
+
+  margin: 0;
+
+  color: #a9a4a0;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.history-page .footer-quote span {
+  color: var(--history-gold-light);
+}
+
+/* Link de retorno ao topo */
+
+.history-page .footer-back-to-top {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 9px;
+
+  color: #c6bda9;
+
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+
+  transition: color 180ms ease;
+}
+
+.history-page .footer-back-to-top:hover {
+  color: #fff;
+}
+
+.history-page .footer-back-to-top span {
+  color: var(--history-gold);
+  font-size: 1rem;
+}
+
+/* Faixa inferior */
+
+.history-page .footer-bottom {
+  padding: 16px var(--history-gutter);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.075);
+
+  background: #050506;
+  text-align: center;
+}
+
+.history-page .footer-bottom p {
+  width: min(var(--history-width), 100%);
+  margin: 0 auto;
+
+  color: #817d7d;
+
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   10. TABLETS E NOTEBOOKS MENORES
+============================================================ */
+
+@media (max-width: 960px) {
+  .history-page {
+    --history-gutter: 30px;
+  }
+
+  .history-page .header-top {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px;
+  }
+
+  .history-page .header-tagline {
+    display: none;
+  }
+
+  .history-page .history-hero {
+    min-height: 555px;
+  }
+
+  .history-page .history-hero-content {
+    padding-right: 40px;
+  }
+
+  .history-page .history-hero-content h1 {
+    font-size: clamp(3.8rem, 8vw, 5.8rem);
+  }
+
+  .history-page .history-hero-stamp {
+    width: 100px;
+    height: 100px;
+  }
+
+  .history-page .history-hero-stamp strong {
+    font-size: 2.2rem;
+  }
+
+  .history-page .history-intro-grid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 38px;
+  }
+
+  .history-page .history-intro-grid h2 {
+    font-size: clamp(2.6rem, 5vw, 3.7rem);
+  }
+
+  .history-page .history-timeline-section .section-heading {
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 0.7fr);
+    gap: 28px;
+  }
+
+  .history-page .timeline-item {
+    grid-template-columns: 48px 140px minmax(0, 1fr);
+    column-gap: 17px;
+  }
+
+  .history-page .timeline::before {
+    left: 23px;
+  }
+
+  .history-page .timeline-year strong {
+    font-size: 2.4rem;
+  }
+
+  .history-page .timeline-year span {
+    font-size: 0.54rem;
+    letter-spacing: 0.09em;
+  }
+
+  .history-page .timeline-card {
+    padding: 25px;
+  }
+
+  .history-page .footer-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .history-page .footer-quote {
+    justify-self: end;
+    text-align: right;
+  }
+
+  .history-page .footer-back-to-top {
+    justify-self: start;
+    grid-column: 1 / -1;
+  }
+}
+
+/* ============================================================
+   11. CELULARES
+============================================================ */
+
+@media (max-width: 680px) {
+  .history-page {
+    --history-gutter: 22px;
+  }
+
+  .history-page p {
+    font-size: 0.89rem;
+    line-height: 1.8;
+  }
+
+  /* Cabeçalho */
+
+  .history-page .header-top {
+    min-height: 76px;
+    padding-block: 13px;
+    gap: 12px;
+  }
+
+  .history-page .brand {
+    gap: 9px;
+  }
+
+  .history-page .brand-mark {
+    flex-basis: 37px;
+    width: 37px;
+    height: 37px;
+  }
+
+  .history-page .brand-name {
+    font-size: 1.35rem;
+  }
+
+  .history-page .header-home-link {
+    min-height: 36px;
+    gap: 6px;
+    padding: 8px 10px;
+
+    font-size: 0.55rem;
+    letter-spacing: 0.035em;
+  }
+
+  /* Hero */
+
+  .history-page .history-hero {
+    align-items: flex-end;
+
+    min-height: 555px;
+
+    padding-top: 65px;
+    padding-bottom: 67px;
+  }
+
+  .history-page .history-hero-media img {
+    object-position: 57% center;
+  }
+
+  .history-page .history-hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(7, 7, 9, 0.93) 0%,
+        rgba(7, 7, 9, 0.73) 62%,
+        rgba(7, 7, 9, 0.55) 100%
+      ),
+      linear-gradient(0deg, rgba(7, 7, 9, 0.97) 0%, rgba(7, 7, 9, 0.2) 76%);
+  }
+
+  .history-page .history-hero-content {
+    width: calc(100% - var(--history-gutter) * 2);
+    padding-right: 0;
+  }
+
+  .history-page .history-hero-content .eyebrow {
+    max-width: 330px;
+    gap: 8px;
+
+    margin-bottom: 19px;
+
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
+  }
+
+  .history-page .history-hero-content .eyebrow::before {
+    flex-basis: 19px;
+    width: 19px;
+  }
+
+  .history-page .history-hero-content h1 {
+    margin-bottom: 20px;
+
+    font-size: clamp(3.25rem, 11.8vw, 4.65rem);
+    letter-spacing: -0.015em;
+    line-height: 0.94;
+  }
+
+  .history-page .history-hero-content h1 span {
+    margin-top: 0.15em;
+  }
+
+  .history-page .history-hero-description {
+    max-width: 510px;
+    margin-bottom: 24px;
+
+    font-size: 0.87rem;
+    line-height: 1.8;
+  }
+
+  .history-page .history-hero-cta {
+    min-width: 218px;
+    min-height: 46px;
+    padding: 12px 14px;
+
+    font-size: 0.63rem;
+  }
+
+  .history-page .history-hero-stamp {
+    display: none;
+  }
+
+  /* Introdução */
+
+  .history-page .history-intro {
+    padding-top: 54px;
+    padding-bottom: 66px;
+  }
+
+  .history-page .history-intro-label {
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 29px;
+    padding-bottom: 14px;
+
+    font-size: 0.55rem;
+    letter-spacing: 0.09em;
+  }
+
+  .history-page .section-index {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .history-page .history-intro-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 23px;
+  }
+
+  .history-page .history-intro-grid .eyebrow {
+    margin-bottom: 15px;
+  }
+
+  .history-page .history-intro-grid h2 {
+    max-width: 520px;
+
+    font-size: clamp(2.75rem, 10vw, 3.75rem);
+    line-height: 0.99;
+  }
+
+  .history-page .history-intro-copy {
+    padding-top: 0;
+  }
+
+  .history-page .history-intro-copy p {
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+  }
+
+  /* Linha do tempo */
+
+  .history-page .history-timeline-section {
+    padding-block: 64px;
+  }
+
+  .history-page .history-timeline-section .section-heading {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 19px;
+
+    margin-bottom: 38px;
+  }
+
+  .history-page .section-heading .eyebrow {
+    margin-bottom: 17px;
+
+    font-size: 0.59rem;
+    letter-spacing: 0.12em;
+  }
+
+  .history-page .section-heading h2 {
+    font-size: clamp(2.75rem, 10vw, 3.7rem);
+    line-height: 0.98;
+  }
+
+  .history-page .section-heading-description {
+    max-width: 480px;
+    justify-self: start;
+    margin: 0;
+
+    font-size: 0.86rem;
+  }
+
+  .history-page .timeline {
+    gap: 24px;
+  }
+
+  .history-page .timeline::before {
+    top: 5px;
+    bottom: 15px;
+    left: 17px;
+  }
+
+  .history-page .timeline-item {
+    grid-template-columns: 36px minmax(0, 1fr);
+    grid-template-areas:
+      "marker year"
+      "marker card";
+
+    column-gap: 15px;
+    row-gap: 12px;
+  }
+
+  .history-page .timeline-marker {
+    align-items: flex-start;
+    justify-content: center;
+
+    padding-top: 5px;
+  }
+
+  .history-page .timeline-marker span {
+    flex-basis: 15px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .history-page .timeline-year {
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+
+    padding-top: 0;
+  }
+
+  .history-page .timeline-year span {
+    font-size: 0.55rem;
+    letter-spacing: 0.09em;
+  }
+
+  .history-page .timeline-year strong {
+    font-size: 2.05rem;
+  }
+
+  .history-page .timeline-card {
+    padding: 21px 18px;
+  }
+
+  .history-page .timeline-card-top {
+    gap: 7px 12px;
+    margin-bottom: 14px;
+  }
+
+  .history-page .timeline-category {
+    font-size: 0.57rem;
+    letter-spacing: 0.09em;
+  }
+
+  .history-page .timeline-number {
+    font-size: 0.55rem;
+  }
+
+  .history-page .timeline-card h3 {
+    margin-bottom: 14px;
+
+    font-size: 1.73rem;
+    line-height: 1.04;
+  }
+
+  .history-page .timeline-card > p {
+    margin-bottom: 14px;
+
+    font-size: 0.86rem;
+    line-height: 1.8;
+  }
+
+  .history-page .timeline-highlight {
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 9px;
+
+    margin-top: 20px;
+    padding: 14px 12px;
+  }
+
+  .history-page .highlight-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.9rem;
+  }
+
+  .history-page .timeline-highlight p,
+  .history-page .timeline-highlight strong {
+    font-size: 0.77rem;
+  }
+
+  /* Encerramento */
+
+  .history-page .history-closing {
+    margin-top: 43px;
+    margin-bottom: 43px;
+
+    padding: 43px 21px;
+  }
+
+  .history-page .history-closing .eyebrow {
+    gap: 8px;
+
+    font-size: 0.57rem;
+    letter-spacing: 0.1em;
+  }
+
+  .history-page .history-closing .eyebrow::before {
+    flex-basis: 17px;
+    width: 17px;
+  }
+
+  .history-page .history-closing h2 {
+    margin-bottom: 18px;
+
+    font-size: clamp(2.45rem, 9vw, 3.45rem);
+    line-height: 1;
+  }
+
+  .history-page .history-closing > p:not(.eyebrow) {
+    font-size: 0.86rem;
+  }
+
+  .history-page .closing-signature {
+    margin-top: 23px;
+    font-size: 0.73rem;
+  }
+
+  /* Navegação */
+
+  .history-page .page-navigation {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+
+    margin-bottom: 44px;
+  }
+
+  .history-page .page-nav-card {
+    gap: 13px;
+
+    min-height: 92px;
+    padding: 17px;
+  }
+
+  .history-page .page-nav-icon {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .history-page .page-nav-overline {
+    font-size: 0.54rem;
+  }
+
+  .history-page .page-nav-copy strong {
+    font-size: 1.48rem;
+  }
+
+  .history-page .page-nav-description {
+    font-size: 0.68rem;
+  }
+
+  /* Footer */
+
+  .history-page .footer-inner {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    gap: 21px;
+
+    padding-top: 28px;
+    padding-bottom: 27px;
+  }
+
+  .history-page .footer-brand img {
+    flex-basis: 38px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .history-page .footer-brand strong {
+    font-size: 1.05rem;
+  }
+
+  .history-page .footer-quote {
+    justify-self: start;
+
+    font-size: 1.05rem;
+    text-align: left;
+  }
+
+  .history-page .footer-back-to-top {
+    justify-self: start;
+  }
+
+  .history-page .footer-bottom {
+    padding-block: 14px;
+  }
+
+  .history-page .footer-bottom p {
+    font-size: 0.52rem;
+  }
+}
+
+/* ============================================================
+   12. CELULARES ESTREITOS
+============================================================ */
+
+@media (max-width: 380px) {
+  .history-page {
+    --history-gutter: 16px;
+  }
+
+  .history-page .header-top {
+    gap: 9px;
+  }
+
+  .history-page .brand {
+    gap: 7px;
+  }
+
+  .history-page .brand-mark {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .history-page .brand-name {
+    font-size: 1.2rem;
+  }
+
+  .history-page .header-home-link {
+    gap: 5px;
+    padding-inline: 8px;
+
+    font-size: 0.49rem;
+  }
+
+  .history-page .history-hero {
+    min-height: 530px;
+  }
+
+  .history-page .history-hero-content h1 {
+    font-size: clamp(2.95rem, 11.5vw, 3.4rem);
+  }
+
+  .history-page .history-hero-description {
+    font-size: 0.83rem;
+  }
+
+  .history-page .history-intro-grid h2,
+  .history-page .section-heading h2 {
+    font-size: 2.6rem;
+  }
+
+  .history-page .timeline-item {
+    grid-template-columns: 30px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .history-page .timeline::before {
+    left: 14px;
+  }
+
+  .history-page .timeline-marker span {
+    flex-basis: 14px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .history-page .timeline-card {
+    padding: 18px 14px;
+  }
+
+  .history-page .timeline-card h3 {
+    font-size: 1.55rem;
+  }
+
+  .history-page .history-closing {
+    padding-inline: 16px;
+  }
+
+  .history-page .history-closing h2 {
+    font-size: 2.35rem;
+  }
+
+  .history-page .page-nav-card {
+    padding: 14px;
+  }
+
+  .history-page .page-nav-copy strong {
+    font-size: 1.33rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .history-page *,
+  .history-page *::before,
+  .history-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   FAITHFUL BRASIL — HOVER DE ALTO IMPACTO
+   Vermelho intenso + dourado + tipografia de destaque
+============================================================ */
+
+/* Transições suaves nos elementos interativos */
+
+.history-page .header-home-link,
+.history-page .history-hero-cta,
+.history-page .timeline-card,
+.history-page .page-nav-card,
+.history-page .page-nav-icon,
+.history-page .footer-back-to-top {
+  transition:
+    transform 240ms ease,
+    color 240ms ease,
+    background-color 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease;
+}
+
+/* 1. Botão principal do hero */
+
+.history-page .history-hero-cta {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid var(--history-gold-light);
+  background: linear-gradient(115deg, #e7c783 0%, #c9a05a 55%, #aa0000 180%);
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.history-page .history-hero-cta:hover {
+  transform: translateY(-4px) scale(1.025);
+
+  border-color: #ffe5a2;
+  color: #fff;
+
+  background: linear-gradient(110deg, #d71920 0%, #a80000 58%, #650000 100%);
+
+  box-shadow:
+    0 9px 30px rgba(170, 0, 0, 0.38),
+    0 0 0 1px rgba(232, 210, 160, 0.45),
+    inset 0 0 18px rgba(255, 255, 255, 0.055);
+}
+
+.history-page .history-hero-cta span:first-child {
+  font-weight: 900;
+  letter-spacing: 0.085em;
+  transition:
+    letter-spacing 240ms ease,
+    color 240ms ease;
+}
+
+.history-page .history-hero-cta:hover span:first-child {
+  color: #fff4dc;
+  letter-spacing: 0.115em;
+}
+
+.history-page .history-hero-cta .cta-arrow {
+  font-size: 1.3rem;
+  font-weight: 900;
+  transition:
+    transform 240ms ease,
+    color 240ms ease;
+}
+
+.history-page .history-hero-cta:hover .cta-arrow {
+  transform: translateY(3px);
+  color: var(--history-gold-light);
+}
+
+/* 2. Link do cabeçalho */
+
+.history-page .header-home-link {
+  position: relative;
+  border-color: rgba(201, 166, 107, 0.5);
+}
+
+.history-page .header-home-link:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--history-gold-light);
+  color: #fff;
+
+  background: linear-gradient(
+    110deg,
+    rgba(170, 0, 0, 0.94),
+    rgba(91, 0, 0, 0.96)
+  );
+
+  box-shadow:
+    0 5px 18px rgba(170, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(232, 210, 160, 0.12);
+}
+
+.history-page .header-home-link > span:first-child {
+  transition:
+    transform 240ms ease,
+    color 240ms ease;
+}
+
+.history-page .header-home-link:hover > span:first-child {
+  transform: translateX(-4px);
+  color: var(--history-gold-light);
+}
+
+/* 3. Cartões da linha do tempo */
+
+.history-page .timeline-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  border-color: rgba(255, 255, 255, 0.12);
+  border-left: 3px solid #a50b13;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Brilho vermelho interno */
+
+.history-page .timeline-card::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(215, 25, 32, 0.24),
+      transparent 58%
+    ),
+    linear-gradient(115deg, rgba(170, 0, 0, 0.1), transparent 60%);
+
+  opacity: 0;
+  content: "";
+  pointer-events: none;
+
+  transition: opacity 260ms ease;
+}
+
+/* Reflexo dourado discreto no canto */
+
+.history-page .timeline-card::after {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+
+  width: 115px;
+  height: 3px;
+
+  background: linear-gradient(90deg, transparent, var(--history-gold-light));
+
+  opacity: 0;
+  content: "";
+  pointer-events: none;
+
+  transition:
+    opacity 240ms ease,
+    width 240ms ease;
+}
+
+/* Mantém todo o conteúdo acima dos efeitos decorativos */
+
+.history-page .timeline-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.history-page .timeline-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(232, 210, 160, 0.48);
+  border-left-color: var(--history-gold-light);
+
+  background-color: #171014;
+
+  box-shadow:
+    0 15px 36px rgba(0, 0, 0, 0.35),
+    0 0 24px rgba(170, 0, 0, 0.13),
+    inset 0 0 22px rgba(170, 0, 0, 0.035);
+}
+
+.history-page .timeline-card:hover::before {
+  opacity: 1;
+}
+
+.history-page .timeline-card:hover::after {
+  width: 190px;
+  opacity: 1;
+}
+
+/* 4. Títulos maiores e mais expressivos nos cartões */
+
+.history-page .timeline-card h3 {
+  transform-origin: left center;
+
+  transition:
+    color 240ms ease,
+    transform 240ms ease,
+    text-shadow 240ms ease;
+}
+
+.history-page .timeline-card:hover h3 {
+  transform: scale(1.045);
+
+  color: var(--history-gold-light);
+
+  text-shadow: 0 0 22px rgba(201, 166, 107, 0.12);
+}
+
+.history-page .timeline-card > p {
+  transition: color 240ms ease;
+}
+
+.history-page .timeline-card:hover > p {
+  color: #e0d9d5;
+}
+
+/* 5. Categorias e destaques em dourado */
+
+.history-page .timeline-category {
+  transition:
+    color 240ms ease,
+    letter-spacing 240ms ease;
+}
+
+.history-page .timeline-card:hover .timeline-category {
+  color: #ffe4a6;
+  letter-spacing: 0.16em;
+}
+
+.history-page .timeline-highlight {
+  transition:
+    border-color 240ms ease,
+    background-color 240ms ease;
+}
+
+.history-page .timeline-card:hover .timeline-highlight {
+  border-color: rgba(232, 210, 160, 0.38);
+  border-left-color: #f0c66f;
+
+  background: linear-gradient(
+    100deg,
+    rgba(170, 0, 0, 0.16),
+    rgba(201, 166, 107, 0.07)
+  );
+}
+
+.history-page .timeline-highlight strong {
+  transition:
+    color 240ms ease,
+    letter-spacing 240ms ease;
+}
+
+.history-page .timeline-card:hover .timeline-highlight strong {
+  color: #ffe4a6;
+  letter-spacing: 0.01em;
+}
+
+/* 6. O capítulo de destaque recebe presença extra */
+
+.history-page .timeline-item-featured .timeline-card {
+  border-left-color: var(--history-gold);
+
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(170, 0, 0, 0.17), transparent 60%),
+    var(--history-panel);
+}
+
+.history-page .timeline-item-featured .timeline-card:hover {
+  border-color: var(--history-gold-light);
+  border-left-color: #fff0bf;
+
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.38),
+    0 0 30px rgba(170, 0, 0, 0.2),
+    0 0 0 1px rgba(201, 166, 107, 0.09);
+}
+
+.history-page .timeline-item-featured .timeline-marker span {
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease,
+    background-color 240ms ease;
+}
+
+.history-page
+  .timeline-item-featured
+  .timeline-card:hover
+  ~ .timeline-marker
+  span {
+  transform: scale(1.12);
+}
+
+/* 7. Navegação entre páginas */
+
+.history-page .page-nav-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+.history-page .page-nav-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+
+  background: linear-gradient(
+    110deg,
+    rgba(170, 0, 0, 0.26),
+    rgba(170, 0, 0, 0.055) 58%,
+    rgba(201, 166, 107, 0.08)
+  );
+
+  opacity: 0;
+  content: "";
+  pointer-events: none;
+
+  transition: opacity 240ms ease;
+}
+
+.history-page .page-nav-card:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--history-gold);
+  background-color: #190d10;
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(170, 0, 0, 0.14);
+}
+
+.history-page .page-nav-card:hover::before {
+  opacity: 1;
+}
+
+.history-page .page-nav-copy strong {
+  transition:
+    color 240ms ease,
+    transform 240ms ease,
+    text-shadow 240ms ease;
+}
+
+.history-page .page-nav-card:hover .page-nav-copy strong {
+  transform: scale(1.045);
+
+  color: var(--history-gold-light);
+
+  text-shadow: 0 0 20px rgba(201, 166, 107, 0.13);
+}
+
+.history-page .page-nav-overline {
+  transition:
+    color 240ms ease,
+    letter-spacing 240ms ease;
+}
+
+.history-page .page-nav-card:hover .page-nav-overline {
+  color: #f17a7f;
+  letter-spacing: 0.16em;
+}
+
+.history-page .page-nav-icon {
+  position: relative;
+  z-index: 1;
+
+  border-color: rgba(201, 166, 107, 0.5);
+  background: rgba(201, 166, 107, 0.035);
+}
+
+.history-page .page-nav-card:hover .page-nav-icon {
+  border-color: var(--history-gold-light);
+  color: #fff0bf;
+
+  background: rgba(170, 0, 0, 0.35);
+
+  box-shadow: 0 0 17px rgba(170, 0, 0, 0.24);
+}
+
+/* 8. Encerramento */
+
+.history-page .history-closing {
+  transition:
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    background-color 260ms ease;
+}
+
+.history-page .history-closing:hover {
+  border-color: rgba(201, 166, 107, 0.48);
+
+  box-shadow:
+    0 12px 38px rgba(0, 0, 0, 0.2),
+    inset 0 0 36px rgba(170, 0, 0, 0.06);
+}
+
+.history-page .history-closing h2 span {
+  transition:
+    color 260ms ease,
+    text-shadow 260ms ease;
+}
+
+.history-page .history-closing:hover h2 span {
+  color: #f0cd83;
+  text-shadow: 0 0 24px rgba(201, 166, 107, 0.12);
+}
+
+/* 9. Retorno ao topo */
+
+.history-page .footer-back-to-top:hover {
+  transform: translateY(-2px);
+  color: #fff0bf;
+}
+
+.history-page .footer-back-to-top span {
+  transition:
+    transform 240ms ease,
+    color 240ms ease;
+}
+
+.history-page .footer-back-to-top:hover span {
+  transform: translateY(-3px);
+  color: var(--history-red-light);
+}
+
+/* 10. Teclado: destaque equivalente ao hover */
+
+.history-page .history-hero-cta:focus-visible,
+.history-page .header-home-link:focus-visible,
+.history-page .page-nav-card:focus-visible {
+  outline: 2px solid var(--history-gold-light);
+  outline-offset: 4px;
+}
+
+/* 11. Celulares: evita escalas que podem prejudicar o layout */
+
+@media (max-width: 680px) {
+  .history-page .timeline-card:hover,
+  .history-page .page-nav-card:hover,
+  .history-page .history-hero-cta:hover {
+    transform: none;
+  }
+
+  .history-page .timeline-card:hover h3,
+  .history-page .page-nav-card:hover .page-nav-copy strong {
+    transform: none;
+  }
+
+  .history-page .timeline-card:hover::after {
+    width: 115px;
+  }
+}
+
+/* 12. Respeita a preferência por movimento reduzido */
+
+@media (prefers-reduced-motion: reduce) {
+  .history-page .header-home-link,
+  .history-page .history-hero-cta,
+  .history-page .timeline-card,
+  .history-page .timeline-card *,
+  .history-page .page-nav-card,
+  .history-page .page-nav-card *,
+  .history-page .history-closing,
+  .history-page .footer-back-to-top {
+    transition: none !important;
+  }
+}
