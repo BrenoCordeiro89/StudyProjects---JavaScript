@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="980" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse"><stop stop-color="#160910"/><stop offset=".5" stop-color="#4c0b19"/><stop offset="1" stop-color="#090a0e"/></linearGradient>
+    <linearGradient id="bowl" x1="1180" y1="300" x2="1650" y2="1080" gradientUnits="userSpaceOnUse"><stop stop-color="#d1b06b" stop-opacity=".85"/><stop offset=".23" stop-color="#a50b20" stop-opacity=".8"/><stop offset="1" stop-color="#1a0c13" stop-opacity=".1"/></linearGradient>
+    <linearGradient id="gold" x1="1120" y1="430" x2="1850" y2="1010" gradientUnits="userSpaceOnUse"><stop stop-color="#f5dfa7"/><stop offset=".4" stop-color="#c29b52" stop-opacity=".64"/><stop offset="1" stop-color="#ae162b" stop-opacity=".12"/></linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(-500 405 -492 -608 1600 417)" gradientUnits="userSpaceOnUse"><stop stop-color="#c21c32" stop-opacity=".45"/><stop offset="1" stop-color="#c21c32" stop-opacity="0"/></radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="35"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
+    <pattern id="seats" width="18" height="13" patternUnits="userSpaceOnUse"><path d="M0 11h13" stroke="#e2c58a" stroke-opacity=".21" stroke-width="2"/></pattern>
+    <pattern id="lines" width="64" height="64" patternUnits="userSpaceOnUse" patternTransform="rotate(-26)"><path d="M0 0V64" stroke="#f3d79a" stroke-opacity=".04" stroke-width="2"/></pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <ellipse cx="1510" cy="740" rx="400" ry="270" fill="#b9122b" fill-opacity=".32" filter="url(#blur)"/>
+  <path d="M833 1080 1028 760Q1265 585 1608 665L1920 845V1080H833Z" fill="#0a0b10" stroke="#bd9a5b" stroke-opacity=".4" stroke-width="3"/>
+  <path d="M950 1080 1111 806Q1337 652 1597 721L1920 899V1080H950Z" fill="#390d18" stroke="#a50b20" stroke-opacity=".8" stroke-width="4"/>
+  <path d="M1002 1080 1156 839Q1364 705 1585 759L1920 936V1080H1002Z" fill="url(#bowl)"/>
+  <path d="M1002 1080 1156 839Q1364 705 1585 759L1920 936V1080H1002Z" fill="url(#seats)"/>
+  <path d="M1124 1080 1251 888Q1419 790 1590 824L1920 997V1080H1124Z" fill="#0d0e13" stroke="#d9b873" stroke-opacity=".68" stroke-width="3"/>
+  <path d="M1154 1080 1277 908Q1424 822 1585 854L1920 1021" stroke="#bd9a5b" stroke-opacity=".38" stroke-width="2"/>
+  <path d="M1260 1080 1364 936Q1473 881 1598 902L1920 1067" stroke="#d9b873" stroke-opacity=".32" stroke-width="2"/>
+  <path d="M1374 1080 1450 967Q1529 935 1610 949L1857 1080" stroke="#d9b873" stroke-opacity=".2" stroke-width="2"/>
+  <path d="M1042 1080 1189 841M1117 1080 1246 866M1197 1080 1308 886M1284 1080 1368 909M1376 1080 1432 930M1468 1080 1497 947M1560 1080 1563 967" stroke="#f0d49a" stroke-opacity=".16" stroke-width="2"/>
+  <path d="M1021 786Q1325 535 1653 692L1918 835" stroke="#f1d49a" stroke-opacity=".66" stroke-width="4"/>
+  <path d="M1010 754Q1328 498 1668 659L1920 802" stroke="#f1d49a" stroke-opacity=".17" stroke-width="22" filter="url(#soft)"/>
+  <path d="M1184 700Q1400 570 1631 680" stroke="#f3dca7" stroke-opacity=".54" stroke-width="5"/>
+  <path d="M1240 668Q1426 574 1607 663" stroke="#a91126" stroke-opacity=".95" stroke-width="13"/>
+  <path d="M1288 642Q1437 578 1585 651" stroke="#f0d49a" stroke-opacity=".45" stroke-width="2"/>
+  <g fill="#f8dfa0">
+    <circle cx="1188" cy="382" r="5"/><circle cx="1218" cy="365" r="4"/><circle cx="1250" cy="349" r="4"/><circle cx="1281" cy="340" r="5"/><circle cx="1318" cy="329" r="4"/><circle cx="1353" cy="319" r="5"/><circle cx="1390" cy="313" r="4"/><circle cx="1427" cy="307" r="5"/><circle cx="1465" cy="309" r="4"/><circle cx="1501" cy="315" r="5"/><circle cx="1536" cy="324" r="4"/><circle cx="1572" cy="336" r="5"/><circle cx="1607" cy="351" r="4"/><circle cx="1641" cy="367" r="5"/><circle cx="1675" cy="389" r="4"/><circle cx="1705" cy="409" r="5"/>
+  </g>
+  <path d="M1188 382 1147 295M1281 340 1261 239M1390 313 1381 207M1501 315 1521 218M1607 351 1650 263M1705 409 1765 340" stroke="#e5ca8d" stroke-opacity=".18" stroke-width="3"/>
+  <g opacity=".5" stroke="#cfaa65" stroke-width="2">
+    <path d="M1450 91v88M1406 135h88"/><path d="M1740 194v68M1706 228h68"/><path d="M1111 225v54M1084 252h54"/>
+  </g>
+  <path d="M1447 0 1520 151 1601 0" stroke="#d8b873" stroke-opacity=".12" stroke-width="2"/>
+  <path d="M1774 0 1680 189 1586 0" stroke="#c21c32" stroke-opacity=".35" stroke-width="3"/>
+  <path d="M1284 0 1380 171 1477 0" stroke="#d8b873" stroke-opacity=".13" stroke-width="2"/>
+  <path d="M965 0H1920V1080H965Z" fill="url(#lines)"/>
+  <path d="M0 1020Q470 935 910 1020" stroke="#a91228" stroke-opacity=".3" stroke-width="2"/>
+  <path d="M0 1044Q470 959 910 1044" stroke="#d3b16e" stroke-opacity=".12" stroke-width="2"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#sky)" fill-opacity=".08"/>
+
+  <!-- Original crowd illustration: red-and-gold supporters, without official team marks. -->
+  <defs>
+    <linearGradient id="fan-jersey" x1="1240" y1="610" x2="1435" y2="1080" gradientUnits="userSpaceOnUse"><stop stop-color="#b8172d"/><stop offset="1" stop-color="#4a0712"/></linearGradient>
+    <linearGradient id="faithful-flag" x1="1430" y1="120" x2="1805" y2="290" gradientUnits="userSpaceOnUse"><stop stop-color="#a70820"/><stop offset=".55" stop-color="#d51b34"/><stop offset="1" stop-color="#700616"/></linearGradient>
+    <pattern id="faithful-crowd" width="48" height="64" patternUnits="userSpaceOnUse">
+      <circle cx="14" cy="15" r="8" fill="#07080c"/>
+      <path d="M0 64V43Q1 27 14 27Q28 27 29 43V64Z" fill="#150b11"/>
+      <path d="M31 64V45Q32 31 40 31Q48 32 48 46V64Z" fill="#4b0915"/>
+      <path d="M4 38 1 27M24 38l6-11" stroke="#b80d28" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="40" cy="22" r="7" fill="#090a0e"/>
+    </pattern>
+  </defs>
+  <g id="faithful-crowd" opacity=".96">
+    <path d="M900 1080V866Q1000 776 1120 824Q1216 737 1327 799Q1450 736 1556 801Q1687 748 1790 820L1920 846V1080Z" fill="url(#faithful-crowd)"/>
+    <path d="M900 1080V980Q1100 895 1280 965Q1510 880 1710 966L1920 930V1080Z" fill="#07080c" fill-opacity=".72"/>
+    <!-- A waving, original supporter banner; intentionally no official logo. -->
+    <path d="M1494 138 1494 93" stroke="#d7b875" stroke-width="5" stroke-linecap="round"/>
+    <path d="M1498 96Q1572 77 1640 95T1795 79L1780 260Q1705 281 1630 265T1498 280Z" fill="url(#faithful-flag)" stroke="#d2af6c" stroke-opacity=".86" stroke-width="3"/>
+    <path d="M1501 112Q1576 93 1642 111T1790 96M1500 260Q1570 245 1632 260T1784 242" stroke="#f0d59a" stroke-opacity=".4" stroke-width="2"/>
+    <text x="1647" y="175" fill="#fff0cb" font-family="Georgia,serif" font-size="37" font-weight="700" letter-spacing="3" text-anchor="middle">FAITHFUL</text>
+    <text x="1647" y="211" fill="#f3dca7" font-family="Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="5" text-anchor="middle">ATÉ O FIM</text>
+    <!-- Large fan seen from behind, arms raised with the crowd. -->
+    <g id="foreground-fan">
+      <path d="M1251 717Q1230 688 1217 644L1180 487Q1174 462 1196 451Q1217 442 1228 468L1282 610Q1291 643 1300 667Z" fill="#8b4e3c" stroke="#2b1015" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M1361 701Q1390 670 1410 625L1447 424Q1452 398 1475 403Q1496 410 1490 437L1474 647Q1467 692 1405 727Z" fill="#9a5b43" stroke="#2b1015" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M1242 679Q1250 621 1307 621Q1368 621 1385 683L1446 1080H1173Z" fill="url(#fan-jersey)" stroke="#260910" stroke-width="7"/>
+      <path d="M1247 669 1274 706 1254 1080H1214L1226 735Z M1370 666 1395 714 1418 1080H1376L1348 711Z" fill="#f1d49a" fill-opacity=".9"/>
+      <path d="M1262 687Q1306 707 1365 687" stroke="#f8e6bb" stroke-width="8" stroke-opacity=".85"/>
+      <circle cx="1311" cy="573" r="42" fill="#101014" stroke="#3c1119" stroke-width="6"/>
+      <path d="M1267 565Q1265 520 1314 520Q1359 523 1354 560L1347 570Q1317 552 1281 572Z" fill="#9e1027" stroke="#e0bf7c" stroke-width="4"/>
+      <path d="M1278 548Q1312 530 1343 548" stroke="#f0d59a" stroke-width="5" stroke-linecap="round"/>
+      <text x="1311" y="812" fill="#f5dca0" font-family="Arial,sans-serif" font-size="31" font-weight="900" letter-spacing="3" text-anchor="middle" transform="rotate(2 1311 812)">FAITHFUL</text>
+      <path d="M1255 845H1368" stroke="#f5dca0" stroke-opacity=".65" stroke-width="3"/>
+    </g>
+    <!-- Gold-dust glints connect the stadium energy to the franchise's Gold Rush roots. -->
+    <g fill="#f5d99c">
+      <circle cx="1114" cy="584" r="4"/><circle cx="1151" cy="545" r="3"/><circle cx="1190" cy="603" r="5"/><circle cx="1518" cy="378" r="4"/><circle cx="1556" cy="408" r="3"/><circle cx="1736" cy="349" r="4"/><circle cx="1812" cy="393" r="3"/><circle cx="1698" cy="480" r="4"/>
+    </g>
+  </g>
+
+</svg>
