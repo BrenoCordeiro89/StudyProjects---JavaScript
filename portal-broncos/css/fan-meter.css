@@ -1,0 +1,229 @@
+/* =========================================================
+   DENVER BRONCOS BRASIL — THE MILE HIGH ROAR
+   Fan meter component
+   ========================================================= */
+
+.fan-meter-panel {
+  position: relative;
+  width: min(100%, 680px);
+  margin-top: 42px;
+  padding: clamp(22px, 4vw, 34px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .18);
+  background:
+    linear-gradient(145deg, rgba(0, 34, 68, .82), rgba(3, 13, 23, .94)),
+    #07111c;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, .34), inset 0 1px rgba(255, 255, 255, .1);
+  isolation: isolate;
+}
+
+.fan-meter-panel::before {
+  position: absolute;
+  z-index: -1;
+  top: -100px;
+  right: -80px;
+  width: 230px;
+  height: 230px;
+  border: 1px solid rgba(251, 79, 20, .24);
+  border-radius: 50%;
+  box-shadow: 0 0 0 22px rgba(251, 79, 20, .035), 0 0 0 48px rgba(251, 79, 20, .025);
+  content: "";
+}
+
+.fan-meter-heading,
+.fan-meter-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.fan-meter-label {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.fan-meter-stage {
+  color: var(--color-orange-light);
+  font-family: var(--font-heading);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-align: right;
+}
+
+.fan-meter-track {
+  position: relative;
+  height: 17px;
+  margin-top: 25px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .2);
+  background:
+    repeating-linear-gradient(90deg, transparent 0, transparent calc(20% - 1px), rgba(255, 255, 255, .16) calc(20% - 1px), rgba(255, 255, 255, .16) 20%),
+    rgba(0, 0, 0, .48);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .55);
+}
+
+.fan-meter-fill {
+  position: relative;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #a92a0b, var(--color-orange), #ff9b35);
+  box-shadow: 0 0 18px rgba(251, 79, 20, .65);
+  transition: width 550ms cubic-bezier(.2,.75,.2,1);
+}
+
+.fan-meter-fill::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 38px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .72));
+  content: "";
+  filter: blur(3px);
+}
+
+.fan-meter-status {
+  margin-top: 13px;
+  color: rgba(255, 255, 255, .64);
+  font-family: var(--font-heading);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.fan-meter-status strong {
+  color: var(--color-orange-light);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.fan-meter-message {
+  min-height: 28px;
+  margin: 17px 0 20px;
+  color: rgba(255, 255, 255, .76);
+  font-size: .88rem;
+}
+
+.fan-meter-button {
+  width: 100%;
+}
+
+.fan-meter-reset {
+  display: block;
+  margin: 15px auto 0;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, .65);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  transition: color var(--transition-fast);
+}
+
+.fan-meter-reset:hover {
+  color: var(--color-orange-light);
+}
+
+.fan-meter-celebration {
+  position: relative;
+  margin-top: 26px;
+  padding: 25px 20px;
+  border: 1px solid rgba(251, 79, 20, .65);
+  background:
+    radial-gradient(ellipse at 50% 0, rgba(251, 79, 20, .25), transparent 65%),
+    rgba(0, 0, 0, .3);
+  text-align: center;
+  animation: roar-celebration-in 550ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.celebration-eyebrow {
+  color: var(--color-orange-light);
+  font-family: var(--font-heading);
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .2em;
+}
+
+.fan-meter-celebration h3 {
+  margin: 8px 0;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 900;
+  line-height: .95;
+  text-shadow: 0 0 25px rgba(251, 79, 20, .3);
+}
+
+.fan-meter-celebration p {
+  max-width: 430px;
+  margin: 12px auto 20px;
+  color: rgba(255, 255, 255, .76);
+  font-size: .88rem;
+}
+
+.fan-meter-celebration .button {
+  width: min(100%, 300px);
+}
+
+/* Intensity states are set by fan-meter.js using data-intensity. */
+
+.fan-meter-panel[data-intensity="warming"] .fan-meter-fill {
+  background: linear-gradient(90deg, #d94a13, #ff7b24);
+}
+
+.fan-meter-panel[data-intensity="strong"] .fan-meter-fill {
+  background: linear-gradient(90deg, #ed4b12, #ff8b24, #ffc04d);
+  box-shadow: 0 0 22px rgba(255, 113, 56, .7);
+}
+
+.fan-meter-panel[data-intensity="intense"] .fan-meter-fill {
+  background: linear-gradient(90deg, #ff4b13, #ff8b26, #ffe07b);
+  box-shadow: 0 0 27px rgba(255, 113, 56, .85);
+}
+
+.fan-meter-panel[data-intensity="extreme"] .fan-meter-fill,
+.fan-meter-panel[data-intensity="maximum"] .fan-meter-fill {
+  background: linear-gradient(90deg, #ff4b13, #ff8b26, #fff0a8);
+  box-shadow: 0 0 34px rgba(255, 113, 56, .95);
+}
+
+.fan-meter-panel.is-complete {
+  border-color: rgba(255, 132, 66, .78);
+  box-shadow: 0 0 38px rgba(251, 79, 20, .2), 0 24px 65px rgba(0, 0, 0, .34);
+}
+
+.fan-meter-panel.is-complete .fan-meter-label {
+  color: var(--color-orange-light);
+}
+
+@keyframes roar-celebration-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fan-meter-fill {
+    transition: none;
+  }
+
+  .fan-meter-celebration {
+    animation: none;
+  }
+}
